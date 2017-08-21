@@ -1,0 +1,14 @@
+{
+    "perl"          : "6.*",
+    "name"          : "Cro::Website",
+    "version"       : "0.1",
+    "description"   : "Website for Cro",
+    "authors"       : [ "Jonathan Worthington <jnthn@jnthn.net>" ],
+    "license"       : "Artistic-2.0",
+    "depends"       : [  "Cro::HTTP", "Text::Markdown" ],
+    "provides"      : {
+        "Routes": "lib/Routes.pm6"
+    },
+    "resources": [],
+    "source-url"    : "https://github.com/jnthn/cro-website.git"
+}
