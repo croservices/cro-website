@@ -20,8 +20,6 @@
   </head>
 
   <body>
-
-    <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -50,15 +48,24 @@
     </nav>
 
     <div class="container">
-      <div class="row">
+      <div class="jumbotron">
+        <h1>Welcome to Cro</h1>
+        <p>
+          Cro is a set of libraries for building reactive distributed systems.
+          Lovingly crafted to take advantage of what Perl 6 has to offer, the
+          high level APIs make the easy things easy, and the asynchronous
+          pipeline concept at Cro's heart makes the hard things possible.
+        </p>
+        <p>
+          Ready to get started? Alrighty. Just <code>zef install --/test cro</code>
+          and check out the <a href="/docs">documentation</a>.
+        </p>
+      </div>
+
+      <div class="row homepage-explore">
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active">
-              <a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">
-                Overview
-              </a>
-            </li>
-            <li role="presentation">
               <a href="#http" aria-controls="http" role="tab" data-toggle="tab">
                 HTTP
               </a>
@@ -82,23 +89,188 @@
         </div>
         <div class="col-md-9">
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="overview">
-              overview
-            </div>
-            <div role="tabpanel" class="tab-pane" id="http">
-              http
+            <div role="tabpanel" class="tab-pane active" id="http">
+              <div id="carousel-http" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-http" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-http" data-slide-to="1"></li>
+                  <li data-target="#carousel-http" data-slide-to="2"></li>
+                  <li data-target="#carousel-http" data-slide-to="3"></li>
+                  <li data-target="#carousel-http" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="carousel-content">
+                      <h2>Set up your routes, and serve them</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>Built-in HTTP server</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>Flexible request router</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>Pluggable body parsing and serialization</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>HTTP client included</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-http" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-http" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="ws">
-              web sockets
+              <div id="carousel-websockets" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-websockets" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-websockets" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="carousel-content">
+                      <h2>Neatly integrated with the HTTP router</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>Web socket client</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-websockets" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-websockets" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="zeromq">
-              zeromq
+              <div id="carousel-zeromq" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-zeromq" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-zeromq" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="carousel-content">
+                      <h2>Create a ZeroMQ service</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>Connect to ZeroMQ sockets in a service</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-zeromq" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-zeromq" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="tooling">
-              tools
+              <div id="carousel-tooling" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-tooling" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-tooling" data-slide-to="1"></li>
+                  <li data-target="#carousel-tooling" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="carousel-content">
+                      <h2>Get started with good defaults</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>cro run</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-content">
+                      <h2>cro trace</h2>
+                      <p>blah</p>
+                      <p>blah</p>
+                      <p>blah</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-tooling" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-tooling" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="alert alert-warning" role="alert">
+        <strong>So you know:</strong> Cro is currently in BETA. We're overall
+        quite satisfied with most of the APIs, and don't plan major changes in
+        this regard. Expect some bumps on the road - and if you run into any of
+        them, please <a href="https://github.com/croservices/cro/issues">consider
+        filing a bug report</a> so we can make things better.
       </div>
     </div>
 

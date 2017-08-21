@@ -1,3 +1,15 @@
 body {
     padding-top: 70px;
 }
+.homepage-explore {
+    margin-bottom: 20px;
+}
+.carousel-control {
+    width: 55px;
+}
+.carousel-content {
+    padding-left: 95px;
+    padding-right: 95px;
+    padding-top: 10px;
+    height: 300px;
+}
