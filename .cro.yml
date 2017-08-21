@@ -1,0 +1,13 @@
+---
+name: cro-website
+cro: 1
+id: cro-website
+env:  []
+links:  []
+entrypoint: service.p6
+endpoints:
+    - id: http
+      protocol: http
+      host-env: CRO_WEBSITE_HOST
+      port-env: CRO_WEBSITE_PORT
+...
