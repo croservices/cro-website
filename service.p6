@@ -1,6 +1,20 @@
 use Cro::HTTP::Log::File;
 use Cro::HTTP::Server;
+use Cro::Transform;
 use Routes;
+
+class CacheHeader does Cro::Transform {
+    method consumes() { Cro::HTTP::Response }
+    method produces() { Cro::HTTP::Response }
+    method transformer(Supply $responses --> Supply) {
+        supply {
+            whenever $responses {
+                .append-header('Cache-control', 'public, max-age=60');
+                .emit;
+            }
+        }
+    }
+}
 
 my Cro::Service $http = Cro::HTTP::Server.new(
     http => '1.1',
@@ -10,6 +24,7 @@ my Cro::Service $http = Cro::HTTP::Server.new(
         die("Missing CRO_WEBSITE_PORT in environment"),
     application => routes(),
     after => [
+        CacheHeader,
         Cro::HTTP::Log::File.new(logs => $*OUT, errors => $*ERR)
     ]
 );
