@@ -24,6 +24,9 @@ sub routes() is export {
         get -> 'images', *@path {
             static 'static-content/images', @path
         }
+        get -> 'fonts', *@path {
+            static 'static-content/fonts', @path
+        }
 
         subset DocName of Str where /^<[A..Za..z0..9-]>+$/;
 
