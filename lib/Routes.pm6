@@ -54,7 +54,7 @@ sub routes() is export {
         }
         sub doc-markdown($path) {
             with slurp("docs/$path") -> $markdown {
-                my $parsed = parse-markdown($markdown.subst(/^^'*'\s/, { " - " }, :g));
+                my $parsed = parse-markdown($markdown);
                 for $parsed.document.items -> $item {
                     if $item ~~ Text::Markdown::Paragraph {
                         for $item.items.kv -> $idx, $val {
