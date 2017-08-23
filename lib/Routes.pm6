@@ -61,7 +61,7 @@ sub routes() is export {
                             when $val ~~ Text::Markdown::Code {
                                 my $file = %lookup{$val.text.lc};
                                 if $file {
-                                    $item.items[$idx] = "<a href=\"$file\">$val\</a>";
+                                    $item.items[$idx] = "<a href=\"$file\">$val\</a>".subst('`', '', :g);
                                 }
                             }
                         }
