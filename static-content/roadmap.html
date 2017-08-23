@@ -51,6 +51,82 @@
 
     <div class="container">
       <h1>Roadmap</h1>
+      <p>
+        This page provides a rough guide to our plans for Cro through to a 1.0
+        release. It will be refined in response to user feedback.
+      </p>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Cro 0.8</h3>
+        </div>
+        <div class="panel-body">
+          <p>This release is primarily aimed at adding features we'd have
+            loved to have in the initial public release of Cro (0.7), but
+            simply didn't have time to do.</p>
+          <ul>
+            <li>Implement <code>include</code> and <code>delegate</code>
+              features in <code>Cro::HTTP::Router</code>.</li>
+            <li>Push promise support for HTTP/2.</li>
+            <li>Provide for per-<code>route</code> block middleware in
+              <code>Cro::HTTP::Router</code>.</li>
+            <li>Provide a plug-in for JSON Web Tokens (both to be useful of
+              itself, but also as an example of how authentication and
+              authorization can be integrated into HTTP applications). Along
+              the way, consider if some "user" or "identity" slot on a HTTP
+              request would be of value in this.</li>
+            <li>Generalize body parsing and provide it for web sockets messages
+              and ZeroMQ messages.</li>
+            <li>More complete handling of links between services.</li>
+            <li>Web interface providing the same features as the
+              <code>cro</code> command line tool.</li>
+            <li>Provide Docker containers and have <code>cro stub</code>
+              templates include a <code>Dockerfile</code>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Cro 0.9</h3>
+        </div>
+        <div class="panel-body">
+          <p>Provide support for some further use cases, and work towards
+            making both Cro and the services written in it more
+            dependable.</p>
+          <ul>
+            <li>Ensure Cro features are fully working on Windows and OSX.</li>
+            <li>Provide implementations of timeout, retry, circuit breaker,
+              and other common robustness patterns.</li> 
+            <li>Implement HTTP reverse proxy support.</li>
+            <li>Provide Cro support for working with some common message
+              queues, at least using STOMP.</li>
+            <li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Cro 1.0</h3>
+        </div>
+        <div class="panel-body">
+          <p>The 1.0 release will not add any notable features over 0.9,
+            but rather will focus on ensuring Cro users can feel confident
+            using it in production environments.</p> 
+          <ul>
+            <li>Set up a bunch of Cro services to run continually as a
+              stress test, both on Rakudo Perl 6 releases and also on
+              daily HEAD snapshots to help catch regressions early, to
+              provide a better experience for Cro users. Ensure this
+              information is published.</li>
+            <li>Perform a security review, and provide clear
+              instructions on submitting vulnerabilities along with
+              documenting the process by which they will be handled.</li>
+            <li>Document API stability and deprecation policy.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <script src="/js/jquery.min.js"></script>
