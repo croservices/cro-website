@@ -10,6 +10,7 @@
     <title>Cro - elegant reactive services in Perl 6</title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/theme.css" rel="stylesheet">
     <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="/css/cro.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -76,11 +77,6 @@
               </a>
             </li>
             <li role="presentation">
-              <a href="#zeromq" aria-controls="zeromq" role="tab" data-toggle="tab">
-                ZeroMQ
-              </a>
-            </li>
-            <li role="presentation">
               <a href="#tooling" aria-controls="tooling" role="tab" data-toggle="tab">
                 Tooling
               </a>
@@ -102,41 +98,151 @@
                   <div class="item active">
                     <div class="carousel-content">
                       <h2>Set up your routes, and serve them</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <pre><code>use Cro::HTTP::Router;
+use Cro::HTTP::Server;
+my $app = route {
+    get -&gt; 'greet', $name {
+        content 'text/plain', "Hello, $name!";
+    }
+}
+my Cro::Service $hello = Cro::HTTP::Server.new:
+    :host&lt;localhost&gt;, :port&lt;10000&gt;;
+$hello.start;
+react whenever signal(SITINT) { $hello.stop; exit; }</code></pre>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-content">
                       <h2>Built-in HTTP server</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            HTTP/1.1 persistent connections
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            HTTP/2.0 (use negotiated with ALPN)
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            HTTPS support
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Add middleware at the server level
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Configure body parsers and serializers
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Requests dispatched to the thread pool, to make use
+                            of multi-core CPUs
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-content">
                       <h2>Flexible request router</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <pre><code># Capture/constrain root segments with a signature.
+get -&gt; 'product', UUIDv4 $id {
+    content 'application/json', get-product($id);
+}
+# Slurp root segments and serve static content
+get -&gt; 'css', *@path {
+    static 'assets/css', @path;
+}
+# Get stuff from the query string
+get -&gt; 'search', :$term! {
+    content 'application/json', do-search($term);
+}</code></pre>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-content">
                       <h2>Pluggable body parsing and serialization</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <p style="font-size: x-large">
+                        Enjoy built-in support for www-form-urlencoded, multi-part,
+                        and JSON bodies - or plug in your own body parsers and
+                        serializers.
+                      </p>
+                      <pre><code>put -&gt; 'order', UUIDv4 $id {
+    request-body -> %json-object {
+        # Save it, and then...
+        content 'application/json', %json-object;
+    }
+}</code></pre>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-content">
                       <h2>HTTP client included</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Asynchronous API for getting the response and the
+                            body (body delivered all at once or streaming)
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Supports HTTP/1.1 persistent connections
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            HTTPS, with optional custom certificate authority
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            HTTP/2.0 support, with requset multiplexing
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Pluggable body parsers/serializers - the same used by
+                            the server - and middleware support
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -160,17 +266,33 @@
                   <div class="item active">
                     <div class="carousel-content">
                       <h2>Neatly integrated with the HTTP router</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <pre><code>my $chat = Supplier.new;
+get -&gt; 'chat' {
+    web-socket -&gt; $incoming {
+        supply {
+            whenever $incoming -&gt; $message {
+                $chat.emit(await $message.body-text);
+            }
+            whenever $chat -&gt; $text {
+                emit $text;
+            }
+        }
+    }
+}</code></pre>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-content">
                       <h2>Web socket client</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <p style="font-size: x-large">
+                        A <code>Supply</code>-based web services client is included
+                        in Cro.
+                      </p>
+                      <p style="font-size: x-large">
+                        It's just what you need for using web sockets between services,
+                        writing web socket clients, or writing integration tests for
+                        services exposed by a web socket.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -179,40 +301,6 @@
                   <span class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#carousel-websockets" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="zeromq">
-              <div id="carousel-zeromq" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel-zeromq" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-zeromq" data-slide-to="1"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                  <div class="item active">
-                    <div class="carousel-content">
-                      <h2>Create a ZeroMQ service</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="carousel-content">
-                      <h2>Connect to ZeroMQ sockets in a service</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
-                    </div>
-                  </div>
-                </div>
-                <a class="left carousel-control" href="#carousel-zeromq" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-zeromq" role="button" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
@@ -229,25 +317,63 @@
                   <div class="item active">
                     <div class="carousel-content">
                       <h2>Get started with good defaults</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <p style="font-size: x-large">
+                        The <code>cro stub ...</code> command stubs new HTTP and
+                        ZeroMQ services.
+                      </p>
+                      <p style="font-size: x-large">
+                        As well as helping you get started faster, it also helps
+                        you to set off in a good direction. For example, it
+                        accepts host and port from the environment (great for
+                        container deployment), and generates a <code>META6.json</code>
+                        for delcaring the service dependencies.
+                      </p>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-content">
                       <h2>cro run</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <p style="font-size: x-large">
+                        A lightweight development service runner.
+                      </p>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Starts services, automatically assigning them free ports
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Automatically restarts services when their code changes
+                        </div>
+                      </div>
+                      <div class="row feature-list">
+                        <div class="col-md-1 tick">
+                          <span class="glyphicon glyphicon-ok" />
+                        </div>
+                        <div class="col-md-11">
+                            Collects and displays service output - telling you which
+                            output came from which service
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-content">
                       <h2>cro trace</h2>
-                      <p>blah</p>
-                      <p>blah</p>
-                      <p>blah</p>
+                      <p style="font-size: x-large">
+                        Runs one or more services with tracing enabled.
+                      </p>
+                      <p style="font-size: x-large">
+                        Tracing enables you to see how requests progress through
+                        the asynchronous pipeline, helping you to more rapidly
+                        understand where a problem occurs.
+                      </p>
                     </div>
                   </div>
                 </div>

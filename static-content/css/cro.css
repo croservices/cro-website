@@ -11,5 +11,30 @@ body {
     padding-left: 95px;
     padding-right: 95px;
     padding-top: 10px;
-    height: 300px;
+    height: 390px;
+}
+.carousel-indicators li {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 5px;
+    text-indent: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background-color: #aaaaaa;
+    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
+}
+.carousel-indicators .active {
+    width: 8px;
+    height: 8px;
+    margin: 5px;
+    background-color: #222222;
+}
+.feature-list {
+    font-size: x-large;
+}
+.tick {
+    text-align: right;
+    color: green;
 }
