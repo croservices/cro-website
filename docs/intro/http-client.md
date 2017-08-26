@@ -1,25 +1,32 @@
-# Making HTTP request
+# Making HTTP requests
 
-Cro has abilities to make HTTP requests as easy as they can be, with
-enough flexibility for complex solutions.
+The Cro HTTP client makes it easy to make simple requests, while having a
+powerful range of features for more complex situations.
 
-The most simple GET request can be written as
+The simplest `GET` request can be written as:
 
 ```
-# Importing the client class.
+# Import the client class.
 use Cro::HTTP::Client;
-# Doing the requests
+
+# Doing the request
 my $resp = await Cro::HTTP::Client.get('https://www.perl6.org/');
 ```
 
 Different methods represent different HTTP methods, such as `get`,
-`post`, `update` and others. Every such method returns a promise that
-is be kept when the response is returned. This promise is kept with
-`Cro::HTTP::Response` class instance. However, body of the request is
-wrapped in another promise as it may be chunked.
+`post`, `put` and `delete`. Every such method returns a `Promise` that
+will be kept when the response is returned. This `Promise` is kept with
+a `Cro::HTTP::Response` instance. The body of the request is also provided
+using a `Promise`, since it may arrive later than the initial response
+header.
+
+```
+my $body = await $resp.body;
+```
 
 To keep the defaults for every request, one can create an instance of
-the client:
+the client and specify them at construction time. For example, the user
+agent header could be set on every request as follows:
 
 ```
 my $client = Cro::HTTP::Client.new(
@@ -29,9 +36,8 @@ my $client = Cro::HTTP::Client.new(
 my $resp = await $client.get('https://www.perl6.org/');
 ```
 
-By the way, yes, you can add headers just like that. Any options that
-are passed on instance creation will work on every request, yet can be
-overriden for a specific request.
+Making an instance has the advantage that connections will be re-used between
+requests, or in the case of HTTP/2.0 they will be multiplexed onto a single
+connection.
 
-For more details see more complete `Cro::HTTP::Client` documentation
-page.
+For more details, see the complete `Cro::HTTP::Client` documentation.

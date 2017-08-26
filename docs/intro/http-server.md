@@ -1,26 +1,25 @@
-# Writing HTTP Server
+# Creating a simple HTTP application
 
-It is quite easy to write up a server. Any server will be based on
-`Cro::HTTP::Server` class, so we need to import it:
+Cro HTTP applications are hosted using its built-in HTTP server. To start
+out, we import it:
 
 ```
 use Cro::HTTP::Server;
 ```
 
-Server basically have to serve requests, so it should get requests(as
-`Cro::HTTP::Request` instance) and emit responses(as
-`Cro::HTTP::Resposne` instance).
-
-User can write a transformer by hands, but it is easier to use a
-`Router` abstraction.
+The server hosts an applicatin, which is something that transforms a
+`Cro::HTTP::Request` instance representing the request into a
+`Cro::HTTP::Resposne` instance representing the response. While it's possible
+to write that "by hand", it is far more convenient to use the HTTP router.
 
 ```
 use Cro::HTTP::Router;
 ```
 
-With these two parts we can start out our server. `Cro::HTTP::Router`
-provides `route` routine that looks like your favorite DSL for serving
-requests, here is the simple example:
+The `Cro::HTTP::Router` module provides a convenient API for mapping incoming
+requests to appropriate handlers. It also provides routines to make it quick
+and easy to produce the most common kinds of responses. Here is a simple
+example:
 
 ```
 my $application = route {
@@ -30,9 +29,9 @@ my $application = route {
 }
 ```
 
-Routines like `get`, `post`, `delete` indicate needed HTTP method,
-while signature part represents the relative URL. THe absence of
-arguments counts as `/`. Let's see some more examples:
+Routines like `get`, `post`, and `delete` indicate the HTTP method,
+while the signature part represents the target of the request. The
+absence of parameters counts as `/`. Let's see some more examples:
 
 ```
 my $application = route {
@@ -48,8 +47,8 @@ my $application = route {
 }
 ```
 
-Application created with `route` can be easily used with
-`Cro::HTTP::Server` as:
+An application created with `route` can be easily used with
+`Cro::HTTP::Server`:
 
 ```
 # Creating a server...
@@ -68,4 +67,4 @@ react whenever signal(SIGINT) {
 
 And the application is up and running, so it's time to improve it: add
 more logic and use other features. See `Cro::HTTP::Router` and
-`Cro::HTTP::Server` for further reading.
+`Cro::HTTP::Server` to learn more.
