@@ -38,3 +38,10 @@ body {
     text-align: right;
     color: green;
 }
+.footer {
+    margin-top: 20px;
+    border-top: solid black 1px;
+    padding: 10px;
+    text-align: center;
+    font-size: small;
+}
