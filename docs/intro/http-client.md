@@ -6,7 +6,7 @@ powerful range of features for more complex situations.
 The simplest `GET` request can be written as:
 
 ```
-# Import the client class.
+# Import the client class
 use Cro::HTTP::Client;
 
 # Doing the request
