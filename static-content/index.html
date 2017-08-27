@@ -108,7 +108,7 @@ my $app = route {
 my Cro::Service $hello = Cro::HTTP::Server.new:
     :host&lt;localhost&gt;, :port&lt;10000&gt;;
 $hello.start;
-react whenever signal(SITINT) { $hello.stop; exit; }</code></pre>
+react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                     </div>
                   </div>
                   <div class="item">
@@ -231,7 +231,7 @@ get -&gt; 'search', :$term! {
                           <span class="glyphicon glyphicon-ok" />
                         </div>
                         <div class="col-md-11">
-                            HTTP/2.0 support, with requset multiplexing
+                            HTTP/2.0 support, with request multiplexing
                         </div>
                       </div>
                       <div class="row feature-list">
@@ -326,7 +326,7 @@ get -&gt; 'chat' {
                         you to set off in a good direction. For example, it
                         accepts host and port from the environment (great for
                         container deployment), and generates a <code>META6.json</code>
-                        for delcaring the service dependencies.
+                        for declaring the service dependencies.
                       </p>
                     </div>
                   </div>
