@@ -106,7 +106,7 @@ my $app = route {
     }
 }
 my Cro::Service $hello = Cro::HTTP::Server.new:
-    :host&lt;localhost&gt;, :port&lt;10000&gt;;
+    :host&lt;localhost&gt;, :port&lt;10000&gt;, :application&lt;$app&gt;;
 $hello.start;
 react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                     </div>
