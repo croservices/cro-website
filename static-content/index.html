@@ -100,13 +100,13 @@
                       <h2>Set up your routes, and serve them</h2>
                       <pre><code>use Cro::HTTP::Router;
 use Cro::HTTP::Server;
-my $app = route {
+my $application = route {
     get -&gt; 'greet', $name {
         content 'text/plain', "Hello, $name!";
     }
 }
 my Cro::Service $hello = Cro::HTTP::Server.new:
-    :host&lt;localhost&gt;, :port&lt;10000&gt;, :application&lt;$app&gt;;
+    :host&lt;localhost&gt;, :port&lt;10000&gt;, :$application;
 $hello.start;
 react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                     </div>
