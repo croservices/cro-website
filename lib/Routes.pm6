@@ -52,23 +52,33 @@ sub routes() is export {
         get -> 'docs', DocName $path, DocName $page {
             doc-markdown "$path/$page.md";
         }
+
+        sub wrap-header($h) {
+            my $safe = $h.text.subst(' ', '_', :g);
+            '<h' ~ $h.level ~ '>' ~ $h.text ~
+            "<a class=\"title-anchor\" name=\"$safe\" href=\"#$safe\">§</a>" ~
+            '</h' ~ $h.level ~ '>';
+        }
+
         sub doc-markdown($path) {
             with slurp("docs/$path") -> $markdown {
                 my $parsed = parse-markdown($markdown);
-                for $parsed.document.items -> $item {
+                for $parsed.document.items -> $item is rw {
                     if $item ~~ Text::Markdown::Paragraph {
                         for $item.items.kv -> $idx, $val {
                             when $val ~~ Text::Markdown::Code {
                                 my $file = %lookup{$val.text.lc};
                                 if $file {
-                                    $item.items[$idx] = "<a href=\"$file\">$val\</a>".subst('`', '', :g);
+                                    $item.items[$idx] = "<a href=\"/docs/$file\">$val\</a>".subst('`', '', :g);
                                 }
                             }
                         }
                     }
+                    elsif $item ~~ Text::Markdown::Heading {
+                        $item = wrap-header($item);
+                    }
                 }
                 my $html = $parsed.to_html;
-                $html .= subst(/'href="' <!before 'http's?':'>/, 'href="/docs/', :g);
                 content 'text/html', $docs-template.subst('<!--DOC-CONTENT-->', $html);
             }
             else {

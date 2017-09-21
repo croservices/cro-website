@@ -45,3 +45,19 @@ body {
     text-align: center;
     font-size: small;
 }
+
+.title-anchor {
+    opacity: 0;
+    color: #333;
+    font-size: 60%;
+    margin-left: 10px;
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: 0.5ex;
+    outline: none;
+    cursor: pointer;
+}
+
+.title-anchor:hover {
+    opacity: 1;
+}
