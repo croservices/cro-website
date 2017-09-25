@@ -46,6 +46,10 @@ body {
     font-size: small;
 }
 
+.title-anchor:target {
+    padding-top: 53px;
+}
+
 .title-anchor {
     opacity: 0;
     color: #333;
