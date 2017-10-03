@@ -53,16 +53,16 @@ sub routes() is export {
             doc-markdown "$path/$page.md";
         }
 
-        sub wrap-header($h) {
-            my $safe = $h.text.subst(' ', '_', :g);
+        sub wrap-header($h, $anchor) {
             '<h' ~ $h.level ~ '>' ~ $h.text ~
-            "<a class=\"title-anchor\" name=\"$safe\" href=\"#$safe\">§</a>" ~
-            '</h' ~ $h.level ~ '>';
+                "<a class=\"title-anchor\" name=\"$anchor\" href=\"#$anchor\">§</a>" ~
+                '</h' ~ $h.level ~ '>';
         }
 
         sub doc-markdown($path) {
             with slurp("docs/$path") -> $markdown {
                 my $parsed = parse-markdown($markdown);
+                my @heading-links;
                 for $parsed.document.items -> $item is rw {
                     if $item ~~ Text::Markdown::Paragraph {
                         for $item.items.kv -> $idx, $val {
@@ -75,11 +75,25 @@ sub routes() is export {
                         }
                     }
                     elsif $item ~~ Text::Markdown::Heading {
-                        $item = wrap-header($item);
+                        my $level = $item.level;
+                        if $level > 1 {
+                            my $anchor = $item.text.subst(' ', '_', :g);
+                            if $level == 2 {
+                                push @heading-links, q:c[<a href="#{$anchor}">{$item.text}</a>];
+                            }
+                            $item = wrap-header($item, $anchor);
+                        }
                     }
                 }
-                my $html = $parsed.to_html;
-                content 'text/html', $docs-template.subst('<!--DOC-CONTENT-->', $html);
+                my $content-html = $parsed.to_html;
+                my $index-html = @heading-links
+                    ?? q[<div class="docs-index"><strong>Contents</strong><ul>] ~
+                        @heading-links.map({ q:c[<li>{$_}</li>] }).join("\n") ~
+                        q[</ul></div>]
+                    !! "";
+                content 'text/html', $docs-template
+                    .subst('<!--DOC-INDEX-->', $index-html)
+                    .subst('<!--DOC-CONTENT-->', $content-html);
             }
             else {
                 not-found;
