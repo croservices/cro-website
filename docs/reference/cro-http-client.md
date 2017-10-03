@@ -52,6 +52,13 @@ The actual exception type will be either `X::Cro::HTTP::Error::Client` for
 when setting up retries that should distinguish server errors from client
 errors).
 
+To set a base URL for every client's request, base URL can be passed
+to `Cro::HTTP::Client` instance as `base-uri` argument.
+
+    my $client = Cro::HTTP::Client.new(base-uri => "http://persistent.url.com");
+    await $client.get('/first');   # http://persistent.url.com/first
+    await $client.get('/another'); # http://persistent.url.com/another
+
 ## Adding extra request headers
 
 One or more headers can be set for a request by passing an array to the
@@ -202,6 +209,15 @@ Or to add extra body parsers atop of the default set use `add-body-parsers`:
 
     my $client = Cro::HTTP::Client.new:
         add-body-parsers => [ My::BodyParser::XML ];
+
+To get the response body as a `Supply` that will emit the bytes as they
+arrive over the network, use the `body-byte-stream` method:
+
+    react {
+        whenever $resp.body-byte-stream -> $chunk {
+            say "Got chunk: $chunk.gist()";
+        }
+    }
 
 To get the entire response body as a `Blob`, use the `body-blob` method:
 
