@@ -665,9 +665,6 @@ to instead use:
 
 ## Composing routers
 
-**Note:** This describes a future feature that is not yet implemented in the
-current version of Cro.
-
 For any non-trivial service, defining all of the routes and their handlers in a
 single file will become difficult to manage. With `include`, it is possible to
 move them out to different modules. For example, a module `OurService::Products`
@@ -747,20 +744,104 @@ modules. Prefixes are considered just as additional literal segments up front.
 A further welcome consequence of this design is that there will be no routing
 performance loss from splitting route handlers over multiple files.
 
+If the including `route` block has body parsers and body serializers, they
+will be visible to the routes in the included `route` block also, making it
+possible to factor out use of body parsers and serializers. Body parsers and
+serializers declared by a `route`  block that is being included will be
+preferred over those provided by an including `route` block.
+
 The `include` operation can only be used to apply routes from another HTTP
-router constructed using `Cro::HTTP::Router`. An alternative is `delegate`,
-which can delegate all requests with a certain prefix to anything implementing
-the `Cro::Transform` role (provided, of course, it maps `Cro::HTTP::Request`s
-into `Cro::HTTP::Response`s).
+router constructed using `Cro::HTTP::Router`.
+
+## Delegating routes to another Cro::Transform
+
+Using `Cro::HTTP::Router` isn't the only way to write a HTTP request handler.
+The router can `delegate` either a specific path, or all paths below a prefix,
+to any `Cro::Transform` that consumes a `Cro::HTTP::Request` and produces a
+`Cro::HTTP::Response`. It is used as follows:
 
 ```
 my $app = route {
-    delegate 'special' => MyTransform;
+    # Delegate requests to /special to MyTransform
+    delegate special => MyTransform;
+
+    # Delegate requests to /multi/part/path to AnotherTransform
     delegate <multi part path> => AnotherTransform;
+
+    # Delegate requests to /proxy *and* everything beneath it to ProxyTransform
+    delegate <proxy *> => ProxyTransform.new(%some-config);
 }
 ```
 
+It is possible to pass multiple pairs to a single `delegate` call, so the
+examples above could be expessed as:
+
+```
+my $app = route {
+    delegate special           => MyTransform,
+             <multi part path> => AnotherTransform,
+             <proxy *>         => ProxyTransform.new(|%some-config);
+}
+```
+
+When using `delegate`, the `Cro::HTTP::Request` object will be shallow-copied,
+and the copy will have the prefix stripped from its `target`; this will also
+impact the return values of `path` and `path-segments`. The `original-target`,
+`original-path`, and `original-path-segments` methods return the original
+paths.
+
+Body parsers declared in the `route` block will be prefixed to the request's
+body parser selector before it is passed to the transform. Any body
+serializers declared in the `route` block will be prefixed to the body
+serializer selector of the response produced by the transform.
+
 Since a `route { }` block makes an object that does `Cro::Transform`, it is
-possible to use it with `delegate` too. This has different semantics from
-`include`; the outer `route` block will not be aware of the routes inside of
-the inner one, leading to a kind of double-dispatch.
+possible to use it with `delegate` too. This has slightly different semantics
+from `include`, and due to the need to do two route dispatches will perform a
+bit worse.
+
+## Applying middleware in a route block
+
+**Note:** This describes a feature that is only partially implemented in the
+current version of Cro. The block convenience forms will be included in an
+upcoming release.
+
+In Cro, middleware is a component in the reactive processing pipeline. It may
+be installed at the server level (see `Cro::HTTP::Server` for more), but also
+per `route` block using the `before` and `after` functions.
+
+The `before` function is used to install middleware that operates on requests
+before their route handler is called. It may be called with a `Cro::Transform`
+that consumes a `Cro::HTTP::Request` and produces a `Cro::HTTP::Request`.
+
+```
+before My::Request::Middleware;
+```
+
+The `after` function is used to install middleware that operates on responses
+produced by a route handler. It may be called with a `Cro::Transform` that
+consumes a `Cro::HTTP::Response` and produces a `Cro::HTTP::Response`.
+
+```
+after My::Response::Middleware;
+```
+
+As a convenience, the `before` and `after` functions may be passed a `Block`.
+This will be invoked with the `Cro::HTTP::Request` or `Cro::HTTP::Response`
+object as an argument, and it can mutate the request or response (the return
+value of the block is ignored). The various response helper functions that are
+available inside of a route handler are also available, so adding an extra
+header to the response can be achieved by:
+
+```
+after {
+    header 'Strict-transport-security', 'max-age=31536000; includeSubDomains'
+}
+```
+
+Within a `route` block, middleware is applied in the order the `before` and
+`after` calls are made. When `include` is used, the `before` middleware of the
+including `route` block will be applied ahead of any middleware in the target
+of the `include`, and the `after` middleware of the including `route` block
+will be applied after the target of the include. Effectively, the middleware
+of the including route block wraps around those of the included.
