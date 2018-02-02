@@ -81,16 +81,21 @@
             </li>
             <li>Web interface providing the same features as the
               <code>cro</code> command line tool.
-              (<strong>🔧 MOSTLY DONE</strong> in 0.7.2)
+              (<strong>✓ DONE</strong> in 0.7.3)
             </li>
-            <li>Provide a plug-in for JSON Web Tokens (both to be useful of
-              itself, but also as an example of how authentication and
-              authorization can be integrated into HTTP applications). Along
-              the way, consider if some "user" or "identity" slot on a HTTP
-              request would be of value in this.</li>
-            <li>Push promise support for HTTP/2.</li>
+            <li>Push promise support for HTTP/2.
+              (<strong>✓ DONE</strong> in 0.7.3)
+            </li>
+            <li>In-memory HTTP session support, a base role for persistent
+              session support, and support for sessions/user objects in the
+              router. Also, an example of Redis to back the persistent session
+              store and how to build a login system.
+              (<strong>✓ DONE</strong> in 0.7.3)
+            </li>
             <li>Generalize body parsing and provide it for web sockets messages
-              and ZeroMQ messages.</li>
+              and ZeroMQ messages.
+              (<strong>🔧 DONE FOR WEBSOCKES</strong> in 0.7.3)
+            </li>
             <li>Provide Docker containers and have <code>cro stub</code>
               templates include a <code>Dockerfile</code>.</li>
           </ul>
@@ -106,10 +111,12 @@
             making both Cro and the services written in it more
             dependable.</p>
           <ul>
-            <li>Ensure Cro features are fully working on Windows and OSX.</li>
+            <li>Provide a module to aid writing tests of HTTP services and
+              web socket applications.</li>
             <li>Provide implementations of timeout, retry, circuit breaker,
               and other common robustness patterns.</li> 
             <li>Implement HTTP reverse proxy support.</li>
+            <li>Ensure Cro features are fully working on Windows and OSX.</li>
             <li>Provide Cro support for working with some common message
               queues, at least using STOMP.</li>
           </ul>
