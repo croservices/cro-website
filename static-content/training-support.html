@@ -1,63 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="/css/cro.css" rel="stylesheet">
     <meta name="description" content="Cro - elegant reactive services in Perl 6">
     <meta name="author" content="Edument Central Europe sro">
-
     <title>Cro - training and support</title>
-
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/theme.css" rel="stylesheet">
-    <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="/css/cro.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Cro</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/docs">Documentation</a></li>
-            <li class="active"><a href="/training-support">Training &amp; Support</a></li>
-            <li><a href="/roadmap">Roadmap</a></li>
-          </ul>
-          <div class="nav navbar-nav navbar-right" style="padding-top: 10px">
-              <a href="http://edument.se/">
-                  <img src="/images/edument.svg" height="30" alt="Made by Edument" />
-              </a>
+    <header class="container-fluid sticky-top">
+      <div class="branding-area">
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <a href="/"><img src="/images/header.svg" alt="Comma" height="90"></a>
+          </div>
+          <div class="col-4 edument-links">
+            <a href="http://www.commaide.com/"><img src="/images/comma-logo.svg" height="75" alt="Cro"></a>
+            <a href="http://perl6.services/courses"><img src="/images/courses-logo.svg" height="75" alt="Courses"></a>
+            <a href="http://perl6.services/consulting"><img src="/images/consulting-logo.svg" height="75" alt="Consulting"></a>
+            <a href="http://edument.se/en/"><img src="/images/edument.svg" height="50" alt="Edument" class="edument-logo"></a>
           </div>
         </div>
       </div>
-    </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/docs">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/training-support">Training &amp; Support</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/roadmap">Roadmap</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-    <div class="container">
+    <div class="container-fluid page-content">
       <h1>Training and Support</h1>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Commercial Support</h3>
+      <div class="card">
+        <div class="card-header">
+         Commercial Support
         </div>
-        <div class="panel-body">
+        <div class="card-body">
           Commercial support for Cro, together with the Rakudo Perl 6 compiler
           and the MoarVM virtual machine, is available from
           <a href="https://edument.se/">Edument AB</a>. So if you run into a
@@ -68,11 +61,11 @@
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Training</h3>
+      <div class="card">
+        <div class="card-header">
+          Training
         </div>
-        <div class="panel-body">
+        <div class="card-body">
           Edument provides top-class education and mentoring. If you need a
           Cro or Perl 6 course, we can help. Those new to Perl 6 may find our
           <a href="https://edument.se/en/education/categories/other-courses/perl-6-for-programmers">Perl 6
@@ -83,30 +76,32 @@
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Feature bounties</h3>
+      <div class="card">
+        <div class="card-header">
+          Feature bounties
         </div>
-        <div class="panel-body">
+        <div class="card-body">
           Missing a feature in Cro? Need it now? Interested in funding its
           development? <a href="mailto:jonathan@edument.se">Get in contact!</a>
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">General consulting</h3>
+      <div class="card">
+        <div class="card-header">
+          General consulting
         </div>
-        <div class="panel-body">
+        <div class="card-body">
           Fancy having the people behind Cro helping with your projects? It may
           well be possible! <a href="https://edument.se/en/concept-and-product-development">Learn
           more</a> about what the Edument team can do.
         </div>
       </div>
+    </div>
 
+    <footer class="container-fluid">
       <div class="footer">
         <a href="https://github.com/croservices">
-          <img src="images/GitHub-Mark-32px.png" alt="Find the source on GitHub" height="32" />
+         <img src="images/GitHub-Mark-32px.png" alt="Find the source on GitHub" height="32" />
         </a>
         <a href="https://twitter.com/croservices">
           <img src="images/twitter-512.gif" alt="Follow Cro on Twitter" height="32" />
@@ -116,10 +111,9 @@
           Documentation and Cro source are covered by the Artistic License 2.0.
         </p>
       </div>
-    </div>
-
-    <script src="/js/jquery.min.js"></script>
+    </footer>
+    <script src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

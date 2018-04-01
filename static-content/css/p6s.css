@@ -1,0 +1,28 @@
+.branding-area {
+    background-color: #eeeeee;
+}
+.edument-links {
+    padding-top: 10px;
+    text-align: right;
+}
+.edument-links img {
+    vertical-align: top;
+    padding-right: 5px;
+}
+.edument-logo {
+    padding-top: 6px;
+}
+
+.home-grid {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+.home-grid div {
+    padding-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    color: #aaaaaa;
+}

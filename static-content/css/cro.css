@@ -1,6 +1,71 @@
-body {
-    padding-top: 70px;
+a {
+    color: #1a5b3d;
 }
+a:hover {
+     color: #1a5b3d;
+}
+a:active {
+     color: #1a5b3d;
+}
+code {
+     color: #333333;
+     background-color: #eeeeee;
+}
+pre {
+    background-color: #eeeeee;
+    padding: 10px;
+}
+
+.branding-area {
+    background-color: #eeeeee;
+}
+.edument-links {
+    padding-top: 10px;
+    text-align: right;
+}
+.edument-links img {
+    vertical-align: top;
+    padding-right: 5px;
+}
+.edument-logo {
+    padding-top: 6px;
+}
+
+.footer {
+    margin-top: 20px;
+    border-top: solid black 1px;
+    padding: 10px;
+    text-align: center;
+    font-size: small;
+}
+
+.jumbotron {
+    padding: 2rem;
+    background-color: #eeeeee;
+}
+.jumbotron h1 {
+    color: #1a5b3d;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #1a5b3d;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #eeeeee;
+    font-weight: bold;
+}
+
+.page-content {
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .homepage-explore {
     margin-bottom: 20px;
 }
@@ -35,15 +100,7 @@ body {
     font-size: x-large;
 }
 .tick {
-    text-align: right;
-    color: green;
-}
-.footer {
-    margin-top: 20px;
-    border-top: solid black 1px;
-    padding: 10px;
-    text-align: center;
-    font-size: small;
+    padding-left: 30px;
 }
 
 .title-anchor:target {
@@ -68,7 +125,7 @@ body {
 
 .docs-index {
     position: fixed;
-    margin-top: 60px;
+    margin-top: 5px;
     width: 250px;
     padding: 5px;
     border: 1px solid #DDDDDD;

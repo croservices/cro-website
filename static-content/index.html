@@ -1,83 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="/css/cro.css" rel="stylesheet">
     <meta name="description" content="Cro - elegant reactive services in Perl 6">
     <meta name="author" content="Edument Central Europe sro">
-
     <title>Cro - elegant reactive services in Perl 6</title>
-
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/theme.css" rel="stylesheet">
-    <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="/css/cro.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Cro</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/docs">Documentation</a></li>
-            <li><a href="/training-support">Training &amp; Support</a></li>
-            <li><a href="/roadmap">Roadmap</a></li>
-          </ul>
-          <div class="nav navbar-nav navbar-right" style="padding-top: 10px">
-              <a href="http://edument.se/">
-                  <img src="/images/edument.svg" height="30" alt="Made by Edument" />
-              </a>
+    <header class="container-fluid">
+      <div class="branding-area">
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <a href="/"><img src="/images/header.svg" alt="Comma" height="90"></a>
+          </div>
+          <div class="col-4 edument-links">
+            <a href="http://www.commaide.com/"><img src="/images/comma-logo.svg" height="75" alt="Cro"></a>
+            <a href="http://perl6.services/courses"><img src="/images/courses-logo.svg" height="75" alt="Courses"></a>
+            <a href="http://perl6.services/consulting"><img src="/images/consulting-logo.svg" height="75" alt="Consulting"></a>
+            <a href="http://edument.se/en/"><img src="/images/edument.svg" height="50" alt="Edument" class="edument-logo"></a>
           </div>
         </div>
       </div>
-    </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/docs">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/training-support">Training &amp; Support</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/roadmap">Roadmap</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Welcome to Cro</h1>
-        <p>
-          Cro is a set of libraries for building reactive distributed systems,
-          lovingly crafted to take advantage of all Perl 6 has to offer. The
-          high level APIs make the easy things easy, and the asynchronous
-          pipeline concept at Cro's heart makes the hard things possible.
-        </p>
-        <p>
-          Ready to get started? Alrighty. Just <code>zef install --/test cro</code>
-          and check out the <a href="/docs">documentation</a>.
-        </p>
+    <div class="container-fluid">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Welcome to Cro</h1>
+          <p class="lead">
+            Cro is a set of libraries for building reactive distributed systems,
+            lovingly crafted to take advantage of all Perl 6 has to offer. The
+            high level APIs make the easy things easy, and the asynchronous
+            pipeline concept at Cro's heart makes the hard things possible.
+          </p>
+          <p class="lead">
+            Ready to get started? Alrighty. Just <code>zef install --/test cro</code>
+            and check out the <a href="/docs">documentation</a>.
+          </p>
+        </div>
       </div>
 
       <div class="row homepage-explore">
         <div class="col-md-3">
-          <ul class="nav nav-pills nav-stacked">
-            <li role="presentation" class="active">
-              <a href="#http" aria-controls="http" role="tab" data-toggle="tab">
+          <ul class="nav nav-pills flex-column">
+            <li role="presentation" class="nav-item">
+              <a class="nav-link active" href="#http" aria-controls="http" role="tab" data-toggle="tab">
                 HTTP
               </a>
             </li>
-            <li role="presentation">
-              <a href="#ws" aria-controls="ws" role="tab" data-toggle="tab">
+            <li role="presentation" class="nav-item">
+              <a class="nav-link" href="#ws" aria-controls="ws" role="tab" data-toggle="tab">
                 Web Sockets
               </a>
             </li>
-            <li role="presentation">
-              <a href="#tooling" aria-controls="tooling" role="tab" data-toggle="tab">
+            <li role="presentation" class="nav-item">
+              <a class="nav-link" href="#tooling" aria-controls="tooling" role="tab" data-toggle="tab">
                 Tooling
               </a>
             </li>
@@ -86,8 +83,7 @@
         <div class="col-md-9">
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="http">
-              <div id="carousel-http" class="carousel slide" data-ride="carousel"
-                  data-interval="false">
+              <div id="carousel-http" class="carousel slide" data-ride="carousel" data-interval="false">
                 <ol class="carousel-indicators">
                   <li data-target="#carousel-http" data-slide-to="0" class="active"></li>
                   <li data-target="#carousel-http" data-slide-to="1"></li>
@@ -96,7 +92,7 @@
                   <li data-target="#carousel-http" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                  <div class="item active">
+                  <div class="carousel-item active">
                     <div class="carousel-content">
                       <h2>Set up your routes, and serve them</h2>
                       <pre><code>use Cro::HTTP::Router;
@@ -112,12 +108,12 @@ $hello.start;
 react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                     </div>
                   </div>
-                  <div class="item">
+                  <div class="carousel-item">
                     <div class="carousel-content">
                       <h2>Built-in HTTP server</h2>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             HTTP/1.1 persistent connections
@@ -125,7 +121,7 @@ react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             HTTP/2.0 (use negotiated with ALPN)
@@ -133,7 +129,7 @@ react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             HTTPS support
@@ -141,7 +137,7 @@ react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Add middleware at the server level
@@ -149,7 +145,7 @@ react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Configure body parsers and serializers
@@ -157,7 +153,7 @@ react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Requests dispatched to the thread pool, to make use
@@ -166,7 +162,7 @@ react whenever signal(SIGINT) { $hello.stop; exit; }</code></pre>
                       </div>
                     </div>
                   </div>
-                  <div class="item">
+                  <div class="carousel-item">
                     <div class="carousel-content">
                       <h2>Flexible request router</h2>
                       <pre><code># Capture/constrain root segments with a signature.
@@ -183,7 +179,7 @@ get -&gt; 'search', :$term! {
 }</code></pre>
                     </div>
                   </div>
-                  <div class="item">
+                  <div class="carousel-item">
                     <div class="carousel-content">
                       <h2>Pluggable body parsing and serialization</h2>
                       <p style="font-size: x-large">
@@ -199,12 +195,12 @@ get -&gt; 'search', :$term! {
 }</code></pre>
                     </div>
                   </div>
-                  <div class="item">
+                  <div class="carousel-item">
                     <div class="carousel-content">
                       <h2>HTTP client included</h2>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Asynchronous API for getting the response and the
@@ -213,7 +209,7 @@ get -&gt; 'search', :$term! {
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Supports HTTP/1.1 persistent connections
@@ -221,7 +217,7 @@ get -&gt; 'search', :$term! {
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             HTTPS, with optional custom certificate authority
@@ -229,7 +225,7 @@ get -&gt; 'search', :$term! {
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             HTTP/2.0 support, with request multiplexing
@@ -237,7 +233,7 @@ get -&gt; 'search', :$term! {
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Pluggable body parsers/serializers - the same used by
@@ -247,12 +243,12 @@ get -&gt; 'search', :$term! {
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#carousel-http" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <a class="carousel-control-prev" href="#carousel-http" role="button" data-slide="prev">
+                  <img src="/images/glyphicon-left.png" />
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#carousel-http" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <a class="carousel-control-next" href="#carousel-http" role="button" data-slide="next">
+                  <img src="/images/glyphicon-right.png" />
                   <span class="sr-only">Next</span>
                 </a>
               </div>
@@ -265,7 +261,7 @@ get -&gt; 'search', :$term! {
                   <li data-target="#carousel-websockets" data-slide-to="1"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                  <div class="item active">
+                  <div class="carousel-item active">
                     <div class="carousel-content">
                       <h2>Neatly integrated with the HTTP router</h2>
                       <pre><code>my $chat = Supplier.new;
@@ -283,7 +279,7 @@ get -&gt; 'chat' {
 }</code></pre>
                     </div>
                   </div>
-                  <div class="item">
+                  <div class="carousel-item">
                     <div class="carousel-content">
                       <h2>Web socket client</h2>
                       <p style="font-size: x-large">
@@ -298,12 +294,12 @@ get -&gt; 'chat' {
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#carousel-websockets" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <a class="carousel-control-prev" href="#carousel-websockets" role="button" data-slide="prev">
+                  <img src="/images/glyphicon-left.png" />
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#carousel-websockets" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <a class="carousel-control-next" href="#carousel-websockets" role="button" data-slide="next">
+                  <img src="/images/glyphicon-right.png" />
                   <span class="sr-only">Next</span>
                 </a>
               </div>
@@ -317,7 +313,7 @@ get -&gt; 'chat' {
                   <li data-target="#carousel-tooling" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                  <div class="item active">
+                  <div class="carousel-item active">
                     <div class="carousel-content">
                       <h2>Get started with good defaults</h2>
                       <p style="font-size: x-large">
@@ -333,7 +329,7 @@ get -&gt; 'chat' {
                       </p>
                     </div>
                   </div>
-                  <div class="item">
+                  <div class="carousel-item">
                     <div class="carousel-content">
                       <h2>cro run</h2>
                       <p style="font-size: x-large">
@@ -341,7 +337,7 @@ get -&gt; 'chat' {
                       </p>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Starts services, automatically assigning them free ports
@@ -349,7 +345,7 @@ get -&gt; 'chat' {
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Automatically restarts services when their code changes
@@ -357,7 +353,7 @@ get -&gt; 'chat' {
                       </div>
                       <div class="row feature-list">
                         <div class="col-md-1 tick">
-                          <span class="glyphicon glyphicon-ok" />
+                          <img src="/images/glyphicon-ok.png" />
                         </div>
                         <div class="col-md-11">
                             Collects and displays service output - telling you which
@@ -366,7 +362,7 @@ get -&gt; 'chat' {
                       </div>
                     </div>
                   </div>
-                  <div class="item">
+                  <div class="carousel-item">
                     <div class="carousel-content">
                       <h2>cro trace</h2>
                       <p style="font-size: x-large">
@@ -380,12 +376,12 @@ get -&gt; 'chat' {
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#carousel-tooling" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <a class="carousel-control-prev" href="#carousel-tooling" role="button" data-slide="prev">
+                  <img src="/images/glyphicon-left.png" />
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#carousel-tooling" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <a class="carousel-control-next" href="#carousel-tooling" role="button" data-slide="next">
+                  <img src="/images/glyphicon-right.png" />
                   <span class="sr-only">Next</span>
                 </a>
               </div>
@@ -401,10 +397,12 @@ get -&gt; 'chat' {
         them, please <a href="https://github.com/croservices/cro/issues">consider
         filing a bug report</a> so we can make things better.
       </div>
+    </div>
 
+    <footer class="container-fluid">
       <div class="footer">
         <a href="https://github.com/croservices">
-          <img src="images/GitHub-Mark-32px.png" alt="Find the source on GitHub" height="32" />
+         <img src="images/GitHub-Mark-32px.png" alt="Find the source on GitHub" height="32" />
         </a>
         <a href="https://twitter.com/croservices">
           <img src="images/twitter-512.gif" alt="Follow Cro on Twitter" height="32" />
@@ -414,10 +412,9 @@ get -&gt; 'chat' {
           Documentation and Cro source are covered by the Artistic License 2.0.
         </p>
       </div>
-    </div>
-
-    <script src="/js/jquery.min.js"></script>
+    </footer>
+    <script src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
