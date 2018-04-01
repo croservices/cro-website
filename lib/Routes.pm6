@@ -21,6 +21,9 @@ sub routes() is export {
         get -> {
             static 'static-content/index.html'
         }
+        get -> 'favicon.ico' {
+            static 'static-content/favicon.ico'
+        }
         get -> 'training-support' {
             static 'static-content/training-support.html'
         }
