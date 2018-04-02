@@ -68,15 +68,21 @@ pre {
 
 .homepage-explore {
     margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1500px;
 }
-.carousel-control {
-    width: 55px;
+.carousel-control-prev {
+    width: 5%;
+}
+.carousel-control-next {
+    width: 5%;
 }
 .carousel-content {
     padding-left: 95px;
     padding-right: 95px;
     padding-top: 10px;
-    height: 390px;
+    height: 420px;
 }
 .carousel-indicators li {
     display: inline-block;
