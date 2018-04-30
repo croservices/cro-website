@@ -63,17 +63,30 @@ sub routes() is export {
                 '</h' ~ $h.level ~ '></a>';
         }
 
+        sub link-code($item) {
+            for $item.items.kv -> $idx, $val {
+                when $val ~~ Text::Markdown::Code {
+                    my $file = %lookup{$val.text.lc};
+                    if $file {
+                        $item.items[$idx] = "<a href=\"/docs/$file\">$val\</a>".subst('`', '', :g);
+                    }
+                }
+            }
+        }
+
         sub doc-markdown($path) {
             with slurp("docs/$path") -> $markdown {
                 my $parsed = parse-markdown($markdown);
                 my @heading-links;
                 for $parsed.document.items -> $item is rw {
                     if $item ~~ Text::Markdown::Paragraph {
-                        for $item.items.kv -> $idx, $val {
-                            when $val ~~ Text::Markdown::Code {
-                                my $file = %lookup{$val.text.lc};
-                                if $file {
-                                    $item.items[$idx] = "<a href=\"/docs/$file\">$val\</a>".subst('`', '', :g);
+                        link-code($item);
+                    }
+                    elsif $item ~~ Text::Markdown::List {
+                        for $item.items -> $list-item {
+                            for $list-item.items -> $val {
+                                if $val ~~ Text::Markdown::Paragraph {
+                                    link-code($val);
                                 }
                             }
                         }
