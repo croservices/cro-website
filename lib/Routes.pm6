@@ -57,9 +57,10 @@ sub routes() is export {
         }
 
         sub wrap-header($h, $anchor) {
-            '<h' ~ $h.level ~ '>' ~ $h.text ~
-                "<a class=\"title-anchor\" name=\"$anchor\" href=\"#$anchor\">§</a>" ~
-                '</h' ~ $h.level ~ '>';
+            "<a name=\"$anchor\">" ~ '<h' ~ $h.level ~
+                ' style="padding-top: 150px; margin-top: -150px;">' ~ $h.text ~
+                "<a class=\"title-anchor\" href=\"#$anchor\">§</a>" ~
+                '</h' ~ $h.level ~ '></a>';
         }
 
         sub doc-markdown($path) {
