@@ -1,17 +1,19 @@
 # Cro::HTTP::Client
 
-The `Cro::HTTP::Client` class provides a flexible HTTP and HTTPS client
-implementation, scaling from simple to more complex use cases. It can be
+The `Cro::HTTP::Client` class provides a flexible asynchronous HTTP and
+HTTPS client, scaling from simple to more complex use cases. It can be
 consumed in two ways:
 
 * By making calls on the type object (`Cro::HTTP::Client.get($url)`). This
   is good for one-off requests, but does not provide connection re-use when
-  making multiple requests to the same server (such as by using keep-alive).
+  making multiple requests to the same server (such as by using HTTP/1.1
+  persistent connections or HTTP/2.0 mutliplexing).
 * By making an instance of `Cro::HTTP::Client`. By default, this enables
-  re-use of a pool of connections. It may also be configured with a default
-  base URL, default authorization data to pass along, and even middleware to
-  insert into the request/response processing pipeline. An instance of
-  `Cro::HTTP::Client` may be used concurrently.
+  re-use of a pool of connections (HTTP/1.1) or multiplexing (HTTP/2.0). It
+  may also be configured with a default base URL, default authorization data
+  to pass along, and even middleware to insert into the request/response
+  processing pipeline. An instance of `Cro::HTTP::Client` may be used
+  concurrently.
 
 In general, if you are going to make a one-off request, just use the type
 object. If you are going to make many requests to the same server or set of
@@ -186,18 +188,27 @@ requesting the enitre body) or a `Supply` (when the body is to be delivered as
 it arrives).
 
 The `body` method returns a `Promise` that will be kept when the body has
-been received and parsed. There default set of body parsers are:
+been received and parsed.
+
+```
+my $resp = await Cro::HTTP::Client.get($some-json-api-url);
+my $json = await $resp.body;
+```
+
+The `body` method will offer the response to each available body parser, and
+returns a `Promise` that will be kept when the first applicable body parser has
+completely parsed the body. The default body parsers available are:
 
 * JSON, which will be used when the `Content-type` header is either
   `application/json` or uses the `+json` suffix. `JSON::Fast` will be used to
   perform the parsing.
-* String fallback, which is used when the `Content-type` type is `text`. A
+* String fallback, which is used when the `Content-type` type is `text/*`. A
   `Str` will be returned.
 * Blob fallback, which is used in all other cases and returns a `Blob` with
   the body.
 
-A `Cro::HTTP::Client` can be configured either with a replacement set of body
-parsers by passing the `body-parsers` argument:
+A `Cro::HTTP::Client` instance can be configured either with a replacement set
+of body parsers by passing the `body-parsers` argument:
 
     my $client = Cro::HTTP::Client.new:
         body-parsers => [
@@ -205,7 +216,7 @@ parsers by passing the `body-parsers` argument:
             My::BodyParser::XML
         ];
 
-Or to add extra body parsers atop of the default set use `add-body-parsers`:
+Or to prepend extra body parsers to the default set, use `add-body-parsers`:
 
     my $client = Cro::HTTP::Client.new:
         add-body-parsers => [ My::BodyParser::XML ];
@@ -384,3 +395,17 @@ react {
     }
 }
 ```
+
+## Custom HTTP methods
+
+The `get`, `post`, `put`, `delete`, `patch` and `head` methods are convenience
+forms of the more general `request` method, which takes the HTTP request
+method as a first argument. The `request` method can be used to make requests
+with other HTTP methods. For example, making a request with the `LINK` method
+can be achieved using:
+
+```
+my $resp = await Cro::HTTP::Client.request('LINK', $url);
+```
+
+This may also be useful if the request method to use is held in a variable.
