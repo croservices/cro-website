@@ -594,7 +594,7 @@ var SubmitTip = () => (
     <div>
         <h2>Got a tip?</h2>
         <div>
-            <textarea rows="2" cols="100" maxlength="200" />
+            <textarea rows="2" cols="100" maxLength="200" />
         </div>
         <input type="button" value="Add Tip" />
     </div>
@@ -867,8 +867,8 @@ $ git commit -m "Wire up Redux"
 Finally, it's time to get adding a tip in the frontend calling the backend!
 We'll need to do two things:
 
-1. Write a POST handler in the Cro backend
-2. Find a way to have our Redux action result in a POST
+* Write a POST handler in the Cro backend
+* Find a way to have our Redux action result in a POST
 
 First for the Cro part. In `lib/Routes.pm6` we add the following route
 implementation:

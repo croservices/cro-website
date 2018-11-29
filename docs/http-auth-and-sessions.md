@@ -82,8 +82,8 @@ my $app = route {
 ```
 
 Note that middleware that populates `auth` must be installed either at the
-server level *or* in a `route` block that **delegates** to this one (*not*
-`include`s it).
+server level *or* in a `route` block with `before` (*not* `before-matched`,
+which will be too late).
 
 ## In-memory session management
 
@@ -110,9 +110,7 @@ my $app = route {
         cookie-name => 'MY_SESSION_COOKIE_NAME'
     );
 
-    delegate <*> => route {
-        # Protected routes here...
-    }
+    # Protected routes here...
 }
 ```
 
@@ -209,7 +207,7 @@ the username and password to authenticate, and should return `True` if it is
 a valid combination and `False` otherwise.
 
 ```
-class MyUser {
+class MyUser does Cro::HTTP::Auth {
     has $.username;
 }
 class MyBasicAuth does Cro::HTTP::Auth::Basic[MyUser, "username"] {
@@ -282,7 +280,9 @@ class UserSession does Cro::HTTP::Auth {
     }
 }
 
-my $routes = route {
+my $app = route {
+    before Cro::HTTP::Session::InMemory[UserSession].new;
+
     subset LoggedIn of UserSession where *.logged-in;
 
     get -> UserSession $s {
@@ -323,11 +323,5 @@ my $routes = route {
         # Call a database or similar here
         return $username eq 'c-monster' && $password eq 'cookiecookiecookie';
     }
-}
-
-my $app = route {
-    # Apply middleware, then delegate to the routes.
-    before Cro::HTTP::Session::InMemory[UserSession].new;
-    delegate <*> => $routes;
 }
 ```
