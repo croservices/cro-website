@@ -34,6 +34,7 @@ The full details, organized by module:
 
 ### Cro::Core
 
+* [Cro::MediaType](docs/reference/cro-mediatype)
 * [Cro::Uri](docs/reference/cro-uri)
 
 ### Cro::TLS
@@ -82,6 +83,10 @@ Pipeline components:
 * [Cro::WebSocket::Handler](docs/reference/cro-websocket-handler)
 * [Cro::WebSocket::MessageParser](docs/reference/cro-websocket-messageparser)
 * [Cro::WebSocket::MessageSerializer](docs/reference/cro-websocket-messageserializer)
+
+### Cro::WebApp
+
+* [Cro::WebApp::Template](docs/reference/cro-webapp-template.md)
 
 ### Cro::OpenAPI::RoutesFromDefinition
 
