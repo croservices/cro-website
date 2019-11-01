@@ -105,7 +105,7 @@ this method would return the list `('baz', 'oh wow')`.
 ### query
 
 Returns the query string part of the URI. For example, given
-`http://bar.com:42/baz?x=1&y=2`, it would return `x=1&y=2`. No perecent
+`http://bar.com:42/baz?x=1&y=2`, it would return `x=1&y=2`. No percent
 sequence decoding is performed. (For parsing of the query string as it is used
 in HTTP applications, use `Cro::Uri::HTTP`, which adds this functionality).
 
@@ -133,7 +133,7 @@ say ~$base.add('../eek.html');  # http://foo.com/bar/eek.html
 
 ## Percent decoding
 
-The `decode-percents` subroutine takes a string and returns a new string,
+The `decode-percents` subroutine takes a string, and returns a new string
 where all percent escape sequences are converted to Unicode characters
 (assuming UTF-8 decoding).
 
@@ -142,4 +142,18 @@ This subroutine is not exported by default, but can be obtained by using the
 
 ```
 use Cro::Uri :decode-percents;
+```
+
+## Percent encoding
+
+The `encode-percents` subroutine takes a string, and returns a new string
+where all characters that are not considered unreserved are percent encoded.
+Non-ASCII characters will be encoding using UTF-8, and each byte percent
+encoded.
+
+This subroutine is not exported by default, but can be obtained by using the
+`encode-percents` tag:
+
+```
+use Cro::Uri :encode-percents;
 ```
