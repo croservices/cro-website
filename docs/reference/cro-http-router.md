@@ -24,7 +24,7 @@ Literal URL segments are expressed as literals:
 
 ```
 my $app = route {
-    # GET /catalogue/
+    # GET /catalogue
     get -> 'catalogue' {
         ...
     }
@@ -733,9 +733,6 @@ to instead use:
     cache-control :no-store, :no-cache;
 
 ## Push Promises
-
-**Upcoming Feature::** *This section describes a feature that will be included
-in an upcoming Cro release.*
 
 HTTP/2.0 allows the response to include push promises. A push promise is used
 to push content associated with the response to the client. For example, CSS,
