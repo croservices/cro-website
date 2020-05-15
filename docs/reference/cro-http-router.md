@@ -1058,3 +1058,34 @@ When `include` is used, the `before-matched` middleware of the including
 `include`, and the `after-matched` middleware of the including `route` block
 will be applied after the target of the include. Effectively, the middleware
 of the including route block wraps around those of the included.
+
+
+## Controlling the invocation of a handler
+
+If you want to intercept the handler's invocation itself, you can use an `around` block.
+It gets passed a closure that invokes the underlying handler (or another `around`).
+The `around` block will be called after all the `before`s, and bef,ore all the `after`s.
+
+```
+around {
+  $_();
+  CATCH {
+    default { log }
+  }
+}
+```
+
+Around blocks are called top-to-bottom
+
+```
+around {
+  // #1
+  $_(); # Calls the 2nd around block
+  // #4
+}
+around {
+  // #2
+  $_(); # Calls the actual handler
+  // #3
+}
+```
