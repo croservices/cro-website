@@ -29,18 +29,20 @@ the type object or an instance of `Cro::HTTP::Client`. They will all return a
 `Promise`, which will be kept if the request is successful or broken if an
 error occurs.
 
-    my $resp = await Cro::HTTP::Client.get('https://www.perl6.org/');
+    my $resp = await Cro::HTTP::Client.get('https://www.raku.org/');
 
 The response will be provided as a `Cro::HTTP::Response` object. It will be
 produced as soon as the request headers are available; the body may not yet
 have been received.
 
-To set a base URL for every client's request, base URL can be passed
-to `Cro::HTTP::Client` instance as `base-uri` argument.
+If making an instance of `Cro::HTTP::Client`, a base URI may be specified.
+The URI passed to request methods will be appended to the base URI using
+the relative URI resolution algorithm.
 
-    my $client = Cro::HTTP::Client.new(base-uri => "http://persistent.url.com");
-    await $client.get('/first');   # http://persistent.url.com/first
-    await $client.get('/another'); # http://persistent.url.com/another
+    my $client = Cro::HTTP::Client.new(base-uri => "http://foo.com/some/path/");
+    await $client.get('added');             # http://foo.com/some/path/added
+    await $client.get('/rooted');           # http://foo.com/rooted
+    await $client.get('http://bar.com/');   # http://bar.com
 
 ## Error handling
 
@@ -80,6 +82,23 @@ object has the request that was sent attached to it. In the event of a
 redirect, the request object will be that of the redirected request, not the
 originally sent request.
 
+## Setting the user agent
+
+By default, `Cro::HTTP::Client` sends a `User-agent` header with the value `Cro`.
+This can be done at the request level:
+
+    my $resp = await Cro::HTTP::Client.get: 'example.com',
+        user-agent => 'MyCrawler v42';
+
+Or set at construction time when making an instance of the client, in which case
+it will be used for all requests (unless overridden in a specific request):
+
+    my $client = Cro::HTTP::Client.new:
+        user-agent => 'MyCrawler v42';
+
+To suppress sending a `User-agent` header, pass either `False`, `Nil`, or the
+empty string.
+
 ## Adding extra request headers
 
 One or more headers can be set for a request by passing an array to the
@@ -90,8 +109,8 @@ of `Cro::HTTP::Header`, or a mix of the two.
         headers => [
             referer => 'http://anotherexample.com',
             Cro::HTTP::Header.new(
-                name => 'User-agent',
-                value => 'Cro'
+                name => 'X-MyCustomHeader',
+                value => 'pancake'
             )
         ];
 
@@ -100,7 +119,7 @@ construction time:
 
     my $client = Cro::HTTP::Client.new:
         headers => [
-            User-agent => 'Cro'
+            X-MyCustomHeader => 'strudel'
         ];
 
 ## Adding query string parameters
@@ -376,6 +395,19 @@ initial request with a 401 response, set the `if-asked` option to `True`.
         password => $password,
         if-asked => True
     }
+
+## Proxying
+
+By default, `Cro::HTTP::Client` will honor the `HTTP_PROXY`, `HTTPS_PROXY`
+and `NO_PROXY` enrivonment variables. It is also possible to pass the
+`http-proxy` and/or `https-proxy` named arguments when constructing
+`Cro::HTTP::Client`; these will be used for all requests made with that
+instance (and take preference over any proxy found via the environment,
+and furthermore cause `NO_PROXY` to be disregarded).
+
+It is not possible to override the proxy at a per-request level. There is no
+mechanism to ignore the `HTTP_PROXY` or `HTTPS_PROXY` environment variables,
+however one could delete them from `%*ENV` if needed.
 
 ## Persistent connections
 

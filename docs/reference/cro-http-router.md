@@ -7,7 +7,7 @@ in turn produce responses.
 
 ## URI segment matching
 
-The router uses Perl 6 signatures to match URLs and extract segments from them.
+The router uses Raku signatures to match URLs and extract segments from them.
 A set of routes are placed in a `route` block. The empty signature corresponds
 to `/`.
 
@@ -197,7 +197,7 @@ the result will be a HTTP 405 Method Not Allowed response.
 Named parameters in a route signature can be used to unpack and constrain the
 route match on additional aspects of the request. By default, values are taken
 from the query string, however traits can be applied to have them use data
-from other sources. Note that named parameters in Perl 6 are optional by default;
+from other sources. Note that named parameters in Raku are optional by default;
 if the query string parameter is required, then it should be marked as such.
 
 ```
@@ -382,7 +382,7 @@ put -> 'product', $id, 'image', $filename {
 }
 ```
 
-The block signature may use Perl 6 signatures in order to unpack the data that
+The block signature may use Raku signatures in order to unpack the data that
 was submitted. This is useful to, for example, unpack a JSON object:
 
 ```
@@ -604,7 +604,7 @@ arguments on to `content` after setting the status code. They are:
 * `forbidden`, for HTTP 403 Forbidden
 * `conflict`, for HTTP 409 Conflict
 
-If the request handler evaluates to `...` (that is, the Perl 6 syntax for stub
+If the request handler evaluates to `...` (that is, the Raku syntax for stub
 code), then a HTTP 510 Not Implemented response will be produced. If evaluating
 the route handler produces an exception, then the exception will be passed on.
 It will then typically be handled by the response serializer, which will produce
@@ -1058,3 +1058,38 @@ When `include` is used, the `before-matched` middleware of the including
 `include`, and the `after-matched` middleware of the including `route` block
 will be applied after the target of the include. Effectively, the middleware
 of the including route block wraps around those of the included.
+
+## Wrapping route handlers
+
+The `around` function can be used at `route`-block level to wrap all handlers
+within that `route` block. This could be used to provide uniform exception
+handling across a set of request handlers.
+
+```
+my $application = route {
+    around -> &handler {
+        # Invoke the route handler
+        handler();
+        CATCH {
+            # If any handler produces this exception...
+            when Some::Domain::Exception::UpdatingOldVersion {
+                # ...return a HTTP 409 Conflict response.
+                conflict;
+            }
+        }
+    }
+}
+```
+
+Both `request` and `response` are available inside of an `around` handler. At
+the point it is called, the handler to call and its arguments will already
+have been determined. The most you can do is choose not to invoke the handler.
+Unlike with `after-matched` middleware, the default mapping of unhandled
+exceptions to a `500` status code will not have been performed yet, making it
+a good place to factor out mapping of domain exceptions into HTTP errors.
+
+The first `around` call will be the innermost wrapping. Wrappings from an
+`include`d `route` block will be considered inner to those in the `route`
+block doing the `include`. If one `around` handler throws an exception,
+another handler outer to it may catch it. Unlike with middleware, `around`
+handlers are not considered pipeline components.

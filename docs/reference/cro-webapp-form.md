@@ -100,7 +100,11 @@ to use the numeric types `Int`, `Rat`, and `Num`. The values will be parsed into
 these types, and a validation error produced if they are malformed. This will also
 cause the generation of a `number` input type in the rendered HTML.
 
-Finally, use of `Bool` will result in a checkbox.
+Some further attribute types come with control type defaults too:
+
+* `Bool` will result in a `checkbox` control
+* `Date` will result in a `date` control
+* `DateTime` will result in a `datetime-local` control
  
 ### Form controls
 
@@ -115,7 +119,7 @@ Taking care to use `is email` and `is telephone` is especially helpful for mobil
 * `is color` - a color input
 * `is date` - a date input
 * `is datetime-local` / `is datetime` - a datetime-local input
-* `is eamil` - an email input
+* `is email` - an email input
 * `is month` - a month input
 * `is multiline` - a multiline text input (rendered as a text area); can have the number
   of rows and columns specified as named arguments, such as `is multiline(:5rows, :60cols)`

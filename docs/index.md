@@ -24,7 +24,7 @@ as well as covering some more advanced topics:
 ## Getting Help
 
 * Post your question on [Stack Overflow](https://stackoverflow.com/) (be sure
-  to tag it `perl6` and `cro`)
+  to tag it `raku` and `cro`)
 * Visit the `#cro` IRC channel on freenode
 * Get [commercial support and training](/training-support)
 
@@ -35,6 +35,7 @@ The full details, organized by module:
 ### Cro::Core
 
 * [Cro::MediaType](docs/reference/cro-mediatype)
+* [Cro::UnhandledErrorReporter](docs/reference/cro-unhandlederrorreporter.md)
 * [Cro::Uri](docs/reference/cro-uri)
 
 ### Cro::TLS
