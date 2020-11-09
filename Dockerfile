@@ -1,4 +1,4 @@
-FROM croservices/cro-http-websocket:0.7.4
+FROM croservices/cro-http:0.8.3
 COPY . /app/cro-website
 RUN cd /app/cro-website && zef install --depsonly --/test .
 ENV CRO_WEBSITE_HOST=0.0.0.0
