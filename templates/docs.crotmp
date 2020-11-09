@@ -6,7 +6,16 @@
             <&HTML-AND-JAVASCRIPT(.body)>
           </div>
           <div class="col-md-3">
-            <&HTML-AND-JAVASCRIPT(.index)>
+            <?.index>
+              <div class="docs-index">
+                <strong>Contents</strong>
+                <ul>
+                  <@index>
+                    <li><a href="#<.anchor>"><.text></a></li>
+                  </@>
+                </ul>
+              </div>
+            </?>
           </div>
       </div>
     </div>

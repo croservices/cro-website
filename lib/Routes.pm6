@@ -80,7 +80,7 @@ sub routes() is export {
             with slurp("docs/$path") -> $markdown {
                 my $parsed = parse-markdown($markdown);
                 my $title = 'documentation';
-                my @heading-links;
+                my @index;
                 for $parsed.document.items -> $item is rw {
                     if $item ~~ Text::Markdown::Paragraph {
                         link-code($item);
@@ -99,7 +99,7 @@ sub routes() is export {
                         if $level > 1 {
                             my $anchor = $item.text.subst(' ', '_', :g);
                             if $level == 2 {
-                                push @heading-links, q:c[<a href="#{$anchor}">{$item.text}</a>];
+                                push @index, %( :$anchor, :text($item.text) );;
                             }
                             $item = wrap-header($item, $anchor);
                         }
@@ -109,12 +109,7 @@ sub routes() is export {
                     }
                 }
                 my $body = $parsed.to_html;
-                my $index = @heading-links
-                    ?? q[<div class="docs-index"><strong>Contents</strong><ul>] ~
-                        @heading-links.map({ q:c[<li>{$_}</li>] }).join("\n") ~
-                        q[</ul></div>]
-                    !! "";
-                template 'docs.crotmp', %( :$title, :$body, :$index );
+                template 'docs.crotmp', %( :$title, :$body, :@index );
             }
             else {
                 not-found;
