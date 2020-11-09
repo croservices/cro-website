@@ -11,7 +11,7 @@
     <title>Cro - <$title></title>
   </head>
   <body>
-    <header class="container-fluid">
+    <header class="container-fluid<?{ $section eq 'docs'}> sticky-top</?>">
       <div class="branding-area">
         <div class="row justify-content-between">
           <div class="col-4">
