@@ -3,7 +3,6 @@ use Cro::WebApp::Template;
 use Text::Markdown;
 
 sub routes() is export {
-    my $docs-template = slurp 'static-content/docs-template.html';
     my %lookup;
     my @files = 'docs'.IO;
     while @files {
@@ -80,6 +79,7 @@ sub routes() is export {
         sub doc-markdown($path) {
             with slurp("docs/$path") -> $markdown {
                 my $parsed = parse-markdown($markdown);
+                my $title = 'documentation';
                 my @heading-links;
                 for $parsed.document.items -> $item is rw {
                     if $item ~~ Text::Markdown::Paragraph {
@@ -103,17 +103,18 @@ sub routes() is export {
                             }
                             $item = wrap-header($item, $anchor);
                         }
+                        else {
+                            $title = $item.text;
+                        }
                     }
                 }
-                my $content-html = $parsed.to_html;
-                my $index-html = @heading-links
+                my $body = $parsed.to_html;
+                my $index = @heading-links
                     ?? q[<div class="docs-index"><strong>Contents</strong><ul>] ~
                         @heading-links.map({ q:c[<li>{$_}</li>] }).join("\n") ~
                         q[</ul></div>]
                     !! "";
-                content 'text/html', $docs-template
-                    .subst('<!--DOC-INDEX-->', $index-html)
-                    .subst('<!--DOC-CONTENT-->', $content-html);
+                template 'docs.crotmp', %( :$title, :$body, :$index );
             }
             else {
                 not-found;
