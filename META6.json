@@ -1,14 +1,23 @@
 {
-    "perl"          : "6.*",
-    "name"          : "Cro::Website",
-    "version"       : "0.1",
-    "description"   : "Website for Cro",
-    "authors"       : [ "Jonathan Worthington <jnthn@jnthn.net>" ],
-    "license"       : "Artistic-2.0",
-    "depends"       : [  "Cro::HTTP", "Text::Markdown" ],
-    "provides"      : {
-        "Routes": "lib/Routes.pm6"
-    },
-    "resources": [],
-    "source-url"    : "https://github.com/jnthn/cro-website.git"
+  "name": "Cro::Website",
+  "description": "Website for Cro",
+  "version": "0.1",
+  "perl": "6.*",
+  "authors": [
+    "Jonathan Worthington <jnthn@jnthn.net>"
+  ],
+  "auth": "Edument",
+  "depends": [
+    "Cro::HTTP",
+    "Text::Markdown",
+    "Cro::WebApp"
+  ],
+  "build-depends": [],
+  "test-depends": [],
+  "provides": {
+    "Routes": "lib/Routes.pm6"
+  },
+  "resources": [],
+  "license": "Artistic-2.0",
+  "source-url": "https://github.com/jnthn/cro-website.git"
 }

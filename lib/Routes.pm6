@@ -1,4 +1,5 @@
 use Cro::HTTP::Router;
+use Cro::WebApp::Template;
 use Text::Markdown;
 
 sub routes() is export {
@@ -17,18 +18,17 @@ sub routes() is export {
         }
     }
 
+    template-location 'templates';
+
     route {
         get -> {
-            static 'static-content/index.html'
-        }
-        get -> 'favicon.ico' {
-            static 'static-content/favicon.ico'
+            template 'index.crotmp';
         }
         get -> 'training-support' {
-            static 'static-content/training-support.html'
+            template 'support.crotmp';
         }
         get -> 'roadmap' {
-            static 'static-content/roadmap.html'
+            template 'roadmap.crotmp';
         }
 
         get -> 'css', *@path {
@@ -42,6 +42,9 @@ sub routes() is export {
         }
         get -> 'fonts', *@path {
             static 'static-content/fonts', @path
+        }
+        get -> 'favicon.ico' {
+            static 'static-content/favicon.ico'
         }
 
         subset DocName of Str where /^<[A..Za..z0..9-]>+$/;

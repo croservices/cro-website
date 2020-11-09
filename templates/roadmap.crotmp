@@ -1,0 +1,55 @@
+<:use 'layout.crotmp'>
+<|layout('roadmap', 'roadmap')>
+    <div class="container-fluid page-content">
+      <h1>Roadmap</h1>
+      <p>
+        This page provides a rough guide to our plans for Cro through to a 1.0
+        release. It will be refined in response to user feedback.
+      </p>
+
+      <div class="card">
+        <div class="card-header">
+          Cro 0.9
+        </div>
+        <div class="card-body">
+          <p>Provide support for some further use cases, and work towards
+            making both Cro and the services written in it more
+            dependable.</p>
+          <ul>
+            <li>Provide a module to aid writing tests of HTTP services and
+              web socket applications.
+              (<strong>🔧 DONE
+                  FOR HTTP</strong> in 0.7.5)</li>
+            <li>Provide implementations of timeout, retry, circuit breaker,
+              and other common robustness patterns.</li>
+            <li>Implement HTTP reverse proxy support.</li>
+            <li>Ensure Cro features are fully working on Windows and OSX.</li>
+            <li>Provide Cro support for working with some common message
+              queues, at least using STOMP.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          Cro 1.0
+        </div>
+        <div class="card-body">
+          <p>The 1.0 release will not add any notable features over 0.9,
+            but rather will focus on ensuring Cro users can feel confident
+            using it in production environments.</p>
+          <ul>
+            <li>Set up a bunch of Cro services to run continually as a
+              stress test, both on Rakudo releases and also on
+              daily HEAD snapshots to help catch regressions early, to
+              provide a better experience for Cro users. Ensure this
+              information is published.</li>
+            <li>Perform a security review, and provide clear
+              instructions on submitting vulnerabilities along with
+              documenting the process by which they will be handled.</li>
+            <li>Document API stability and deprecation policy.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</|>
