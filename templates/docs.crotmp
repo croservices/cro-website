@@ -1,6 +1,6 @@
 <:use 'layout.crotmp'>
 <|layout('docs', .title)>
-    <div class="container-fluid page-content">
+    <div class="page-content">
       <div class="row">
           <div class="col-md-9">
             <&HTML-AND-JAVASCRIPT(.body)>

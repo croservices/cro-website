@@ -1,6 +1,6 @@
 <:use 'layout.crotmp'>
 <|layout('support', 'training and support')>
-    <div class="container-fluid page-content">
+    <div class="page-content">
       <h1>Training and Support</h1>
 
       <div class="card">

@@ -18,6 +18,16 @@ pre {
 
 .branding-area {
     background-color: #eeeeee;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.branding-area > :first-child {
+    /* let logos slightly overlap Cro img */
+    width: 300px;
+    overflow-x: visible;
 }
 .edument-links {
     padding-top: 10px;
@@ -61,9 +71,7 @@ pre {
 }
 
 .page-content {
-    padding-top: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 20px;
 }
 
 .homepage-explore {
@@ -141,4 +149,9 @@ pre {
     margin: 0;
     padding-left: 20px;
     list-style-type: square;
+}
+
+body > * {
+    max-width: 1200px;
+    margin: 0 auto;
 }

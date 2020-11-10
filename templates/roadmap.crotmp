@@ -1,6 +1,6 @@
 <:use 'layout.crotmp'>
 <|layout('roadmap', 'roadmap')>
-    <div class="container-fluid page-content">
+    <div class="page-content">
       <h1>Roadmap</h1>
       <p>
         This page provides a rough guide to our plans for Cro through to a 1.0

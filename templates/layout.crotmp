@@ -11,21 +11,19 @@
     <title>Cro - <$title></title>
   </head>
   <body>
-    <header class="container-fluid<?{ $section eq 'docs'}> sticky-top</?>">
+    <header<?{ $section eq 'docs'}> class="sticky-top"</?>>
       <div class="branding-area">
-        <div class="row justify-content-between">
-          <div class="col-4">
-            <a href="/"><img src="/images/header.svg" alt="Comma" height="90"></a>
-          </div>
-          <div class="col-4 edument-links">
-            <a href="https://www.commaide.com/"><img src="/images/comma-logo.svg" height="75" alt="Cro"></a>
-            <a href="https://raku.courses/"><img src="/images/courses-logo.svg" height="75" alt="Courses"></a>
-            <a href="https://raku.consulting/"><img src="/images/consulting-logo.svg" height="75" alt="Consulting"></a>
-            <a href="http://edument.se/en"><img src="/images/edument.svg" height="50" alt="Edument" class="edument-logo"></a>
-          </div>
+        <div>
+          <a href="/"><img src="/images/header.svg" alt="Cro" height="90"></a>
+        </div>
+        <div class="edument-links">
+          <a href="https://www.commaide.com/" class="d-none d-sm-inline"><img src="/images/comma-logo.svg" height="75" alt="Comma"></a>
+          <a href="http://raku.courses/" class="d-none d-sm-inline"><img src="/images/courses-logo.svg" height="75" alt="Courses"></a>
+          <a href="http://raku.consulting/" class="d-none d-sm-inline"><img src="/images/consulting-logo.svg" height="75" alt="Consulting"></a>
+          <a href="http://edument.se/en" class="d-none d-md-inline"><img src="/images/edument.svg" height="50" alt="Edument" class="edument-logo"></a>
         </div>
       </div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <ul class="navbar-nav mr-auto">
           <:sub nav-item($url, $text, $active)>
           <li class="nav-item<?$active> active</?>">
@@ -39,7 +37,9 @@
         </ul>
       </nav>
     </header>
-    <:body>
+    <div>
+      <:body>
+    </div>
     <footer class="container-fluid">
       <div class="footer">
         <a href="https://github.com/croservices">
