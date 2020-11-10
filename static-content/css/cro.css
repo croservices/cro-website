@@ -137,6 +137,14 @@ pre {
     opacity: 1;
 }
 
+@media (min-height: 550px) {
+    .docs-sticky-top {
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+    }
+}
+
 .docs-index {
     position: fixed;
     margin-top: 5px;

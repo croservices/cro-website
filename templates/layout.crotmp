@@ -11,7 +11,7 @@
     <title>Cro - <$title></title>
   </head>
   <body>
-    <header<?{ $section eq 'docs'}> class="sticky-top"</?>>
+    <header<?{ $section eq 'docs'}> class="docs-sticky-top"</?>>
       <div class="branding-area">
         <div>
           <a href="/"><img src="/images/header.svg" alt="Cro" height="90"></a>
