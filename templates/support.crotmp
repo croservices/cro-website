@@ -20,21 +20,6 @@
 
       <div class="card">
         <div class="card-header">
-          Training
-        </div>
-        <div class="card-body">
-          Edument provides top-class education and mentoring. If you need a
-          Cro or Raku course, we can help. Those new to Raku may find our
-          <a href="https://edument.se/en/education/categories/other-courses/perl-6-for-programmers">Raku
-          for Programmers</a> course valuable. We can also deliver
-          <a href="https://edument.se/en/education">courses</a> on a wide range
-          of other technologies and topics, such as JavaScript, React.js,
-          and Git.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
           Feature bounties
         </div>
         <div class="card-body">
@@ -49,7 +34,7 @@
         </div>
         <div class="card-body">
           Fancy having the people behind Cro helping with your projects? It may
-          well be possible! <a href="https://edument.se/en/concept-and-product-development">Learn
+          well be possible! <a href="https://www.edument.se/en/page/projects">Learn
           more</a> about what the Edument team can do.
         </div>
       </div>
