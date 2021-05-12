@@ -1,9 +1,13 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cro-website-app
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      service: cro-website
+      tier: backend
   template:
     metadata:
       labels:
@@ -12,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cro-website-app
-          image: "gcr.io/mystical-banner-176722/app:v56"
+          image: "gcr.io/mystical-banner-176722/app:v57"
           ports:
             - name: http
               containerPort: 8080
