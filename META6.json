@@ -10,7 +10,7 @@
   "depends": [
     "Cro::HTTP",
     "Text::Markdown",
-    "Cro::WebApp"
+    "Cro::WebApp:ver<0.8.4>"
   ],
   "build-depends": [],
   "test-depends": [],
