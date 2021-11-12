@@ -18,11 +18,12 @@
           <ul>
             <li>Provide a module to aid writing tests of HTTP services and
               web socket applications.
-              (<strong>🔧 DONE
-                  FOR HTTP</strong> in 0.7.5)</li>
+              (<strong>🔧 DONE FOR HTTP</strong> in 0.7.5)</li>
             <li>Provide implementations of timeout, retry, circuit breaker,
-              and other common robustness patterns.</li>
-            <li>Implement HTTP reverse proxy support.</li>
+              and other common robustness patterns.
+              (<strong>🔧 STARTED</strong> with HTTP client timeout support in 0.7.8)</li>
+            <li>Implement HTTP reverse proxy support.
+              (<strong>🔧 DONE</strong> in 0.7.8)</li>
             <li>Ensure Cro features are fully working on Windows and OSX.</li>
             <li>Provide Cro support for working with some common message
               queues, at least using STOMP.</li>
