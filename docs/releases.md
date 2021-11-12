@@ -1,5 +1,57 @@
 # Cro Release History
 
+## 0.8.7
+
+This release brings a number of bug fixes and new features, the most significant being
+an easy way to set up reverse proxying (where HTTP requests are forwarded to another
+server for processing, perhaps with modifications), configurable timeouts in the Cro
+HTTP client, and support for separators in Cro template iteration. Those using Cro
+templates will also enjoy file/line information from the template file when undefined
+values are encountered during template rendering.
+
+The following changes were made to the `Cro::Core` distribution:
+
+* Add a role for timeout policies, along with a default concrete
+  timeout policy implementation for staged operations
+
+The following changes were made to the `Cro::TLS` distribution:
+
+* Set minimum version of IO::Socket::Async::SSL module
+
+The following changes were made to the `Cro::HTTP` distribution:
+
+* Add `Cro::HTTP::ReverseProxy`, a reverse proxy transform. Reverse proxies forward requests
+  to other HTTP servers. The headers and body can be manipulated in either direction, and
+  the target URL selected dynamically based on the request if needed
+* Implement support for timeouts in `Cro::HTTP::Client`. Timeouts can be set individually
+  for establishing a connection to the server, receiving the response headers, and
+  receiving the response body; an overall time budget for the total process can also be
+  set
+* Fix a memory leak on every connection when middleware was used
+* Fix parsing of cookie values wrapped in double quotes
+* Report an error on no matching body serializer (using the unhandled error reporter, which
+  by default notes in on `$*ERR`)
+* Ensure `content` overrides any existing content type header of the response
+* Report a likely wrong router implementation case where a signature capture is specified
+  instead of a signature
+
+The following changes were made to the `Cro::WebApp` distribution:
+
+* Add a way to render a separator between items in an iteration tag
+* Give a better warning when data passed to a template contains a `Nil` or a type object,
+  specifying the exact template file and line where the undefined value was encountered
+* Allow forms to be rendered with non-POST methods
+* Properly display `DateTime` fields in Cro::WebApp::Forms
+
+The following changes were made to the `Cro` distribution:
+
+* Fix some typos in the documentation
+* Document new features
+
+This release was contributed to by Alexander Kiryuhin and Jonathan Worthington from
+[Edument](http://cro.services/training-support), together with the following community
+members: Stefan Seifert, Will "Coke" Coleda, Clifton Wood, James Raspass.
+
 ## 0.8.6
 
 This release brings a number of significant improvements.
@@ -132,7 +184,7 @@ The following changes were made to the `Cro::HTTP::Test` distribution:
 
 * Add semantic test subs `is-ok`, `is-no-content`, `is-bad-request`,
   `is-unauthorized`, `is-forbidden`, `is-not-found`, `is-method-not-allowed`,
-  `is-conflict` and `is-unprocessible-entity`
+  `is-conflict` and `is-unprocessable-entity`
 
 The following changes were made to the `Cro` distribution:
 
@@ -447,7 +499,7 @@ authentication and authorization is handled as part of route matching.
 
 The previous behavior (applying middleware only to a route that has been
 matched) is preserved and renamed to `before-matched` and `after-matched`.
-Therefore, any code can be adapated by replacing calls to `before` to
+Therefore, any code can be adapted by replacing calls to `before` to
 use `before-matched`, and replacing calls to `after` to `after-matched`.
 
 The new `before` and `after`-applied middleware semantics result in a
@@ -491,7 +543,7 @@ The following changes were made to the `Cro::HTTP` distribution:
   various ways that it might end up working slowly due to eating too
   many real threads.
 * When a route fails to match with 400 or 401, and another route fails
-  to match with a 405, perfer the 400 or 401 error.
+  to match with a 405, prefer the 400 or 401 error.
 
 The following changes were made to the `Cro::WebSocket` distribution:
 
