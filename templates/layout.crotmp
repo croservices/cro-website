@@ -17,7 +17,7 @@
           <a href="/"><img src="/images/header.svg" alt="Cro" height="90"></a>
         </div>
         <div class="edument-links">
-          <a href="https://www.commaide.com/" class="d-none d-sm-inline"><img src="/images/comma-logo.svg" height="75" alt="Comma"></a>
+          <a href="https://commaide.com/" class="d-none d-sm-inline"><img src="/images/comma-logo.svg" height="75" alt="Comma"></a>
           <a href="http://raku.courses/" class="d-none d-sm-inline"><img src="/images/courses-logo.svg" height="75" alt="Courses"></a>
           <a href="http://raku.consulting/" class="d-none d-sm-inline"><img src="/images/consulting-logo.svg" height="75" alt="Consulting"></a>
           <a href="http://edument.se/en" class="d-none d-md-inline"><img src="/images/edument.svg" height="50" alt="Edument" class="edument-logo"></a>
