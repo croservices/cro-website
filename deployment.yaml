@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cro-website-app
-          image: "gcr.io/mystical-banner-176722/app:v60"
+          image: "gcr.io/mystical-banner-176722/app:v62"
           ports:
             - name: http
               containerPort: 8080
