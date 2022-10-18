@@ -56,6 +56,7 @@ Server side:
 * [Cro::HTTP::Middleware](docs/reference/cro-http-middleware)
 * [HTTP Sessions and Authentication](docs/http-auth-and-sessions)
 * [Cro::HTTP::ReverseProxy](docs/reference/cro-http-reverseproxy)
+* [Cro::HTTP::Log::File](docs/reference/cro-http-log-file)
 
 Requests, responses, and related types:
 
@@ -88,8 +89,12 @@ Pipeline components:
 
 ### Cro::WebApp
 
+* Cro::WebApp::Template
+    * [Using templates to produce responses](docs/reference/cro-webapp-template)
+    * [Template language syntax](docs/reference/cro-webapp-template-syntax)
+    * [Template modules](docs/reference/cro-webapp-template-modules)
+    * [Template parts](docs/reference/cro-webapp-template-parts)
 * [Cro::WebApp::Form](docs/reference/cro-webapp-form)
-* [Cro::WebApp::Template](docs/reference/cro-webapp-template)
 
 ### Cro::OpenAPI::RoutesFromDefinition
 
