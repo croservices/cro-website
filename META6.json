@@ -8,9 +8,9 @@
   ],
   "auth": "Edument",
   "depends": [
-    "Cro::HTTP",
+    "Cro::HTTP:ver<0.8.7>",
     "Text::Markdown",
-    "Cro::WebApp:ver<0.8.4>"
+    "Cro::WebApp:ver<0.8.7>"
   ],
   "build-depends": [],
   "test-depends": [],
