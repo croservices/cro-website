@@ -732,7 +732,7 @@ our reducer to `createStore`:
 
 ```
 let store = createStore(tipsyReducer);
-````
+```
 
 Next up, we need to map the state from the store into properties that will be
 available in our React components, and also produce some functions that will
