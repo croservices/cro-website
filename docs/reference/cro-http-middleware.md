@@ -156,7 +156,7 @@ class HSTS does Cro::HTTP::Middleware::Response {
     method process(Supply $responses) {
         supply whenever $responses -> $rep {
             $rep.append-header: 'Strict-transport-security',
-                "max-age=$!max-age"
+                "max-age=$!max-age";
             emit $rep;
         }
     }
