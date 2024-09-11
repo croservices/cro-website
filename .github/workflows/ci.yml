@@ -1,0 +1,31 @@
+name: Build and Test
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Run test script
+        run: ./scripts/test.sh
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    env:
+      QUAY_USERNAME: chroot.club+cro_robot_rw
+      QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Build and push container
+        run: ./scripts/cibuild.sh container
+
+
