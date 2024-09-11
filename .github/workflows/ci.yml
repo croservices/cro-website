@@ -16,7 +16,7 @@ jobs:
   #     - name: Run test script
   #       run: ./scripts/test.sh
 
-  build:
+  build_and_push:
     runs-on: ubuntu-latest
     env:
       QUAY_USERNAME: chroot.club+cro_robot_rw
