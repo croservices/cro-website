@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link href="/css/cro.css" rel="stylesheet">
     <meta name="description" content="Cro - elegant reactive services in Raku">
-    <meta name="author" content="Edument Central Europe sro">
     <title>Cro - <$title></title>
   </head>
   <body>
@@ -17,10 +16,7 @@
           <a href="/"><img src="/images/header.svg" alt="Cro" height="90"></a>
         </div>
         <div class="edument-links">
-          <a href="https://commaide.com/" class="d-none d-sm-inline"><img src="/images/comma-logo.svg" height="75" alt="Comma"></a>
-          <a href="http://raku.courses/" class="d-none d-sm-inline"><img src="/images/courses-logo.svg" height="75" alt="Courses"></a>
-          <a href="http://raku.consulting/" class="d-none d-sm-inline"><img src="/images/consulting-logo.svg" height="75" alt="Consulting"></a>
-          <a href="http://edument.se/en" class="d-none d-md-inline"><img src="/images/edument.svg" height="50" alt="Edument" class="edument-logo"></a>
+            <!-- edument links were here -->
         </div>
       </div>
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -32,7 +28,6 @@
           </:>
           <&nav-item('/', 'Home', $section eq 'index')>
           <&nav-item('/docs', 'Documentation', $section eq 'docs')>
-          <&nav-item('/training-support', 'Training & Support', $section eq 'support')>
           <&nav-item('/roadmap', 'Roadmap', $section eq 'roadmap')>
         </ul>
       </nav>
@@ -45,11 +40,9 @@
         <a href="https://github.com/croservices">
          <img src="images/GitHub-Mark-32px.png" alt="Find the source on GitHub" height="32" />
         </a>
-        <a href="https://twitter.com/croservices">
-          <img src="images/twitter-512.gif" alt="Follow Cro on Twitter" height="32" />
-        </a>
         <p>
-          Website copyright Edument Central Europe sro.<br />
+          Website copyright The Raku Community<br />
+          Website copyright 2017-2024 Edument Central Europe sro.<br />
           Documentation and Cro source are covered by the Artistic License 2.0.
         </p>
       </div>
