@@ -426,7 +426,12 @@ The entire template can be rendered as normal, in which case the `<:fragment...>
 and `</:>` delimiters are ignored. Template content inside the fragment delimiters 
 can contain conditionals, variables and so on which use the outer topic.
 
-Alternatively, the fragment can be rendered individually from a route block 
+```
+template('templates/page.crotmp',
+            { archived => True, id => 42, email => 'me@me.com' }));
+```
+
+Alternatively, a fragment can be rendered individually from a route block 
 by specifying its name:
 
 ```
