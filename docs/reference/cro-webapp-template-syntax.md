@@ -79,9 +79,9 @@ encoded for insertion into the document.
 ## Variables
 
 Various Cro template constructs introduce variables. These include iteration,
-subroutines, macros, and parts. Note that variables that are in scope in the
-`route` block at the location `template` is called are *not* in scope in the
-template; only variables explicitly introduced inside of the template can be
+subroutines, macros, fragments, and parts. Note that variables that are in scope 
+in the `route` block at the location `template` is called are *not* in scope in 
+the template; only variables explicitly introduced inside of the template can be
 referenced.
 
 The `<$name>` syntax is used to refer to a variable. It will be stringified,
@@ -395,6 +395,55 @@ be used as:
 ```
 
 To set the current target for the body in a macro, use `<:body $target>`.
+
+## Fragments
+
+A template fragment works somewhat like a template subroutine, except that it is
+intended to be placed inline within other template content. In this example, 
+the fragment is used with HTMX tags (see https://htmx.org) to provide dynamic 
+behaviour.
+
+```
+<html>
+  <body>
+    <div hx-target="this">
+      <:fragment archive-ui($_)>
+        <?.archived>
+        <button hx-patch="/contacts/<.id>/unarchive">Unarchive</button>
+        </?>
+        <!>
+        <button hx-delete="/contacts/<.id>">Archive</button>
+        </!>
+      </:>
+    </div>
+    <h3>Contact</h3>
+    <p><.email></p>
+  </body>
+</html>
+```
+
+The entire template can be rendered as normal, in which case the `<:fragment...>` 
+and `</:>` delimiters are ignored. Template content inside the fragment delimiters 
+can contain conditionals, variables and so on which use the outer topic.
+
+Alternatively, the fragment can be rendered individually from a route block 
+by specifying its name:
+
+```
+template('templates/page.crotmp', :fragment<archive-ui>, 
+            { archived => True, id => 42, email => 'me@me.com' }));
+```
+
+A fragment should be written with parameter of `$_` to set its internal topic.
+
+Or, the fragment can be rendered individually from another template like a 
+regular sub using `§` in place of `&`:
+
+```
+<§archive-ui($_)>
+```
+
+Here the `$_` argument will pass in the outer topic.
 
 ## Inserting HTML and JavaScript
 
