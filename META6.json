@@ -15,7 +15,7 @@
   "build-depends": [],
   "test-depends": [],
   "provides": {
-    "Routes": "lib/Routes.pm6"
+    "Routes": "lib/Routes.rakumod"
   },
   "resources": [],
   "license": "Artistic-2.0",
