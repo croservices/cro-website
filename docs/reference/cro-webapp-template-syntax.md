@@ -442,10 +442,10 @@ template('templates/page.crotmp', :fragment<archive-ui>,
 A fragment should be written with parameter of `$_` to set its internal topic.
 
 Or, the fragment can be rendered individually from another template like a 
-regular sub using `§` in place of `&`:
+regular sub using `~` (tilde) in place of `&`:
 
 ```
-<§archive-ui($_)>
+<~archive-ui($_)>
 ```
 
 Here the `$_` argument will pass in the outer topic.
