@@ -2,7 +2,7 @@
 
 ## Using template files as modules 
 
-Template subs and macros can be factored out into other template files. For
+Template subs, macros and fragments can be factored out into other template files. For
 example, given `common.crotmp` as follows:
 
 ```
@@ -39,7 +39,7 @@ were registered as a template location those will be considered too.
 
 ## In the module ecosystem
 
-It is also possible to create Raku distributions of Cro template subs and macros,
+It is also possible to create Raku distributions of Cro template subs, macros and fragments
 for reuse across multiple applications and potentially for publication in the Raku
 module ecosystem. Such a library should:
 
