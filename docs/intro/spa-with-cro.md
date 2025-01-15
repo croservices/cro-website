@@ -79,7 +79,7 @@ Initialized empty Git repository in /home/jnthn/dev/cro/tipsy/.git/
 jnthn@lviv:~/dev/cro/tipsy$ echo '.precomp/' > .gitignore
 jnthn@lviv:~/dev/cro/tipsy$ git add .
 jnthn@lviv:~/dev/cro/tipsy$ git commit -m "Stub tipsy backend"
-[master (root-commit) ff1043a] Stub tipsy backend
+[main (root-commit) ff1043a] Stub tipsy backend
  5 files changed, 99 insertions(+)
  create mode 100644 .cro.yml
  create mode 100644 .gitignore
@@ -271,7 +271,7 @@ frontend stubbing:
 $ echo 'node_modules/' >> .gitignore
 $ git add .
 $ git commit -m "Stub JavaScript application"
-[master 199866c] Stub JavaScript application
+[main 199866c] Stub JavaScript application
  6 files changed, 40 insertions(+), 1 deletion(-)
  create mode 100644 frontend/index.js
  create mode 100644 package.json
@@ -487,7 +487,7 @@ And with these, our tests pass. Progress!
 ```
 $ git add .
 $ git commit -m "Implement first part of business logic"
-[master 6e352c6] Implement first part of business logic
+[main 6e352c6] Implement first part of business logic
  6 files changed, 70 insertions(+), 4 deletions(-)
  create mode 100644 lib/Tipsy.rakumod
  create mode 100644 t/tipsy.t
@@ -581,7 +581,7 @@ Run `npm run build` again, refresh, and it should say `Hello React!`.
 ```
 $ git add .
 $ git commit -m "Setup react"
-[master 0ffa260] Setup react
+[main 0ffa260] Setup react
  5 files changed, 27 insertions(+), 1 deletion(-)
  create mode 100644 .babelrc
 ```
@@ -857,7 +857,7 @@ It's commit time again.
 ```
 $ git add .
 $ git commit -m "Wire up Redux"
-[master 3478433] Wire up Redux
+[main 3478433] Wire up Redux
  5 files changed, 83 insertions(+), 7 deletions(-)
  create mode 100644 frontend/actions.js
  rewrite frontend/index.js (81%)
@@ -1500,7 +1500,7 @@ At last, we're done.
 
 ```
 $ git commit -m "Add agree/disagree feature" .
-[master 5d792bc] Add agree/disagree feature
+[main 5d792bc] Add agree/disagree feature
  6 files changed, 188 insertions(+), 18 deletions(-)
 ```
 
