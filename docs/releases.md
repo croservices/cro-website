@@ -1,5 +1,128 @@
 # Cro Release History
 
+## 2025-01-15
+
+This is the first Community release of Cro. I'd like to add another huge thanks
+to Edument for developing and freely releasing the Cro libraries. Let's hope
+that we as a community will manage to suitably continue the development of
+these libraries.
+
+In this release we've changed the project structure do decouple the versions of
+the different distributions. So from now onward, the versions of the different
+distros do not necesssarily match up anymore. This will allow us to release
+changes faster. When installing one of the Cro distros, the dependency
+specifications will pull in the latest compatible versions of the other Cro
+distros. So the versions are not unchanging anymore. If you require a
+completely fixed version set of the Cro distros, please depend on all of the
+ones you need explicitly.
+
+We've also renamed the default branch in all of the Cro repositories from
+`master` to `main`. To update your local repos respectively please run the
+following commands:
+
+    git branch -m master main
+    git fetch origin
+    git branch -u origin/main main
+    git remote set-head origin -a
+
+Happy hacking!
+
+
+The latest versions of the Cro libraries are:
+
+Cro::Core:ver<0.8.10>:api<0>:auth<zef:cro>
+Cro::HTTP:ver<0.8.10>:api<0>:auth<zef:cro>
+Cro::TLS:ver<0.8.10>:api<0>:auth<zef:cro>
+Cro::WebApp:ver<0.9.0>:api<0>:auth<zef:cro>
+Cro::WebSocket:ver<0.8.10>:api<0>:auth<zef:cro>
+cro:ver<0.8.10>:api<0>:auth<zef:cro>
+
+To use the Cro libraries in a project, it usually suffices to only depend on
+`Cro::HTTP` and optionally `Cro::WebApp` or `Cro::WebSocket`.
+
+### Cro::Core 0.8.10
+
+- Fix parsing URIs with empty path segments.
+- Enhance `Cro::Message` objects to allow adding arbitrary data via
+  `%.attributes`.
+- Add an `$.origin` field to the `X::Cro::Uri::ParseError` exception so that
+  consuming code can add origination information if so desired.
+- Change dependency management to allow individual Cro modules to be
+  updated individually.
+- Rename all `.pm6` files to `.rakumod` and `.t` files to `.rakutest`.
+
+This release was contributed to by:
+
+Clifton Wood, Patrick Böker
+
+
+### Cro::HTTP 0.8.10
+
+- Add two `Response` convenience methods: `not-supported` (500) and
+  `server-error` (505).
+- Add support for HTTP/2 cookie headers.
+- Be more lenient when receiving Cookies with duplicate parameters.
+- Fix HTTP1.1 connection caching when explicitly passing the HTTP version.
+- Fix HTTP2 connections with multiple streams stalling.
+- Change dependency management to allow individual Cro modules to be
+  updated individually.
+- Rename all `.pm6` files to `.rakumod` and `.t` files to `.rakutest`.
+
+This release was contributed to by:
+
+Clifton Wood, Jeremy Carman, Patrick Böker, Vadim Belman
+
+
+### Cro::TLS 0.8.10
+
+- Change dependency management to allow individual Cro modules to be
+  updated individually.
+- Update test certificates.
+- Rename all `.pm6` files to `.rakumod` and `.t` files to `.rakutest`.
+
+This release was contributed to by:
+
+Patrick Böker
+
+
+### Cro::WebApp 0.9.0
+
+- Implement Fragment support. A template fragment works somewhat like a
+  template subroutine, except that it is intended to be placed inline within
+  other template content. This allows rendering only parts of a template. This
+  can prove useful when building dynamic web pages using e.g. HTMX.
+- Fix using template parts via `render-template`.
+- Fix the generation of `DateTime` values in form elements.
+- Change dependency management to allow individual Cro modules to be
+  updated individually.
+
+This release was contributed to by:
+
+Patrick Böker, Steve Roe
+
+
+### Cro::WebSocket 0.8.10
+
+- Change dependency management to allow individual Cro modules to be
+  updated individually.
+- Rename all `.pm6` files to `.rakumod` and `.t` files to `.rakutest`.
+
+This release was contributed to by:
+
+Patrick Böker
+
+
+### cro 0.8.10
+
+- Fix tests and CI.
+- Change dependency management to allow individual Cro modules to be
+  updated individually.
+
+This release was contributed to by:
+
+Patrick Böker, Timo Paulssen, Tom Grimwood-Taylor
+
+
 ## 0.8.9
 
 This is a small bugfix release. Various tests involve use of TLS, which uses
