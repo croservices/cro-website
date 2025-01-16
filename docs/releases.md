@@ -1,13 +1,13 @@
 # Cro Release History
 
-## 2025-01-15
+## 2025-01-15 The first Community Release and Fragment support
 
 This is the first Community release of Cro. I'd like to add another huge thanks
 to Edument for developing and freely releasing the Cro libraries. Let's hope
 that we as a community will manage to suitably continue the development of
 these libraries.
 
-In this release we've changed the project structure do decouple the versions of
+In this release we've changed the project structure to decouple the versions of
 the different distributions. So from now onward, the versions of the different
 distros do not necesssarily match up anymore. This will allow us to release
 changes faster. When installing one of the Cro distros, the dependency
@@ -17,7 +17,7 @@ completely fixed version set of the Cro distros, please depend on all of the
 ones you need explicitly.
 
 We've also renamed the default branch in all of the Cro repositories from
-`master` to `main`. To update your local repos respectively please run the
+`master` to `main`. To update your local repos respectively, please run the
 following commands:
 
     git branch -m master main
@@ -25,17 +25,28 @@ following commands:
     git branch -u origin/main main
     git remote set-head origin -a
 
+The biggest new feature introduced in this release set is fragment support in
+Cro templates. A fragment works somewhat like a template subroutine, except
+that it is intended to be placed inline within other template content. This
+allows rendering only parts of a template which can prove useful when building
+dynamic web pages using e.g. HTMX.
+
+Apart from fragment support quite a few smaller other features and many bug
+fixes made it into the release as well. Below you'll find the full list of
+changes for each distro.
+
 Happy hacking!
 
+---
 
 The latest versions of the Cro libraries are:
 
-Cro::Core:ver<0.8.10>:api<0>:auth<zef:cro>
-Cro::HTTP:ver<0.8.10>:api<0>:auth<zef:cro>
-Cro::TLS:ver<0.8.10>:api<0>:auth<zef:cro>
-Cro::WebApp:ver<0.9.0>:api<0>:auth<zef:cro>
-Cro::WebSocket:ver<0.8.10>:api<0>:auth<zef:cro>
-cro:ver<0.8.10>:api<0>:auth<zef:cro>
+- Cro::Core:ver<0.8.10>:api<0>:auth<zef:cro>
+- Cro::HTTP:ver<0.8.10>:api<0>:auth<zef:cro>
+- Cro::TLS:ver<0.8.10>:api<0>:auth<zef:cro>
+- Cro::WebApp:ver<0.9.0>:api<0>:auth<zef:cro>
+- Cro::WebSocket:ver<0.8.10>:api<0>:auth<zef:cro>
+- cro:ver<0.8.10>:api<0>:auth<zef:cro>
 
 To use the Cro libraries in a project, it usually suffices to only depend on
 `Cro::HTTP` and optionally `Cro::WebApp` or `Cro::WebSocket`.
