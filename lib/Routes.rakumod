@@ -20,6 +20,9 @@ sub routes() is export {
     template-location 'templates';
 
     route {
+        # respond to HEAD requests for monitoring
+        http 'HEAD', -> {
+        }
         get -> {
             template 'index.crotmp';
         }
