@@ -58,8 +58,8 @@ Clifton Wood, Patrick Böker
 
 ### Cro::HTTP 0.8.10
 
-- Add two `Response` convenience methods: `not-supported` (500) and
-  `server-error` (505).
+- Add two `Response` convenience methods: `server-error` (500) and
+  `not-supported` (505).
 - Add support for HTTP/2 cookie headers.
 - Be more lenient when receiving Cookies with duplicate parameters.
 - Fix HTTP1.1 connection caching when explicitly passing the HTTP version.
