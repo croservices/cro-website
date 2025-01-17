@@ -1,27 +1,21 @@
-FROM ubuntu:kinetic
+FROM docker.io/rakudo-star:latest
 
-# Native dependencies
-RUN apt update && \
-    apt install -y curl uuid-dev libpq-dev libssl-dev unzip build-essential && \
-    apt purge
+# docker build --build-arg quay_expiration="4w" -t quay.io/your-repo/your-image:tag .
+ARG quay_expiration=never
+LABEL quay.expires-after=${quay_expiration}
 
-# Raku
-RUN curl -1sLf \
-  'https://dl.cloudsmith.io/public/nxadm-pkgs/rakudo-pkg/setup.deb.sh' \
-  | bash
-RUN apt-get install -y rakudo-pkg=2022.4.0-02
-ENV PATH="/opt/rakudo-pkg/bin:${PATH}"
-RUN install-zef
+RUN apt-get update -y && apt-get upgrade -y && \
+    apt-get install -y uuid-dev libpq-dev libssl-dev unzip build-essential && \
+    apt-get purge -y
 
 RUN mkdir /app
 COPY META6.json /app
 WORKDIR /app
-# HACK: New enough TLS module
-RUN ~/.raku/bin/zef install --/test 'IO::Socket::Async::SSL:ver<0.7.12>'
-RUN ~/.raku/bin/zef install --/test --depsonly .
+RUN zef install --/test --deps-only .
 
 COPY . /app
 RUN raku -c -Ilib service.p6
 ENV CRO_WEBSITE_HOST=0.0.0.0
 ENV CRO_WEBSITE_PORT=8080
 CMD raku -Ilib service.p6
+
