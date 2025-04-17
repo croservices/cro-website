@@ -1,0 +1,22 @@
+{
+    log {
+        output stdout
+    }
+}
+
+https://cro.raku.org:443 {
+    reverse_proxy v1-20240911-11:8080    
+}
+
+http://cro.raku.org:80 {
+    reverse_proxy v1-20240911-11:8080    
+}
+
+http://*.baggy.int.raku.org:80 {
+    @virtual_host header_regexp Host ([a-z0-9\-]+)\.baggy\.int\.raku\.org
+
+    handle @virtual_host {
+        reverse_proxy {re.1}:8080
+    }
+}
+
