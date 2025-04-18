@@ -151,3 +151,20 @@ lives-ok { template-location 'templates/', :compile-all },
 
 done-testing;
 ```
+
+## Template Inline
+
+Occasionally, it can be convenioent to create a template within the route
+block code and to pass the source directly to the route. A routine, 
+`template-inline` is provided for this. Note that callables such as
+subs, macros, parts and fragments may not persist after inline calls.
+
+```
+use Cro::WebApp::Template;
+
+route {
+    get -> {
+        template-inline '<.foo>, <.bar>', { foo => 'hello', bar => 'world', };
+    }
+}
+```
