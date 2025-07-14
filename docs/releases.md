@@ -1,5 +1,37 @@
 # Cro Release History
 
+## 2025-07-14 Cro::HTTP::Client gets more stable
+
+Another pesky bug in our HTTP2 protocol stack was squished. Let's see if this
+finally is the last fix on our year long journey to a Cro::HTTP::Client that
+Just Works.
+
+Also installation on Windows should be a be a bit easier now.
+
+---
+
+The latest versions of the Cro libraries are:
+
+* Cro::Core:ver<0.8.10>:api<0>:auth<zef:cro>
+* Cro::HTTP:ver<0.8.11>:api<0>:auth<zef:cro>
+* Cro::TLS:ver<0.8.10>:api<0>:auth<zef:cro>
+* Cro::WebApp:ver<0.10.0>:api<0>:auth<zef:cro>
+* Cro::WebSocket:ver<0.8.10>:api<0>:auth<zef:cro>
+* cro:ver<0.8.10>:api<0>:auth<zef:cro>
+
+To use the Cro libraries in a project, it usually suffices to only depend on
+`Cro::HTTP` and optionally `Cro::WebApp` or `Cro::WebSocket`.
+
+### Cro::HTTP 0.8.11
+
+* Avoid sending a 0-byte `WINDOW_UPDATE` frame
+* Permit use of updated HTTP::Pack module
+
+This release was contributed to by:
+
+Brian Duggan, Sam Gillespie
+
+
 ## 2025-04-14 Inline template support
 
 A small release of `Cro::WebApp` adding inline template support.
