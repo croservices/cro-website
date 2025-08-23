@@ -7,9 +7,11 @@ cmd_container () {
   tag_version="v1-$(date +%Y%m%d)-${GITHUB_RUN_NUMBER}"
 
   echo $QUAY_PASSWORD | docker login quay.io -u $QUAY_USERNAME --password-stdin
-  full_tag="quay.io/chroot.club/cro-website:${tag_version}"
-  docker build --build-arg quay_expiration="8w" -t $full_tag .
-  docker push $full_tag
+  sortable_tag="quay.io/chroot.club/cro-website:${tag_version}"
+  latest_tag="quay.io/chroot.club/cro-website:latest"
+  docker build --build-arg quay_expiration="8w" -t $sortable_tag -t $latest_tag .
+  docker push $sortable_tag
+  docker push $latest_tag
 }
 
 
