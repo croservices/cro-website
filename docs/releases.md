@@ -225,7 +225,7 @@ The following changes were made to the `Cro::WebSocket` distribution:
   Raku pairs
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington from
-[Edument](http://cro.services/training-support), together with the following community
+[Edument](http://www.edument.se/), together with the following community
 members: Patrick Böker.
 
 ## 0.8.8
@@ -305,7 +305,7 @@ The following changes were made to the `Cro` distribution:
 * Have `cro stub` produce output using modern Raku file extensions
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington from
-[Edument](http://cro.services/training-support), together with the following community
+[Edument](http://www.edument.se/), together with the following community
 members: Brian Duggan, dakkar, Juan Julián Merelo Guervós, Patrick Böker, Sylvain
 Colinet, Xliff.
 
@@ -358,7 +358,7 @@ The following changes were made to the `Cro` distribution:
 * Document new features
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington from
-[Edument](http://cro.services/training-support), together with the following community
+[Edument](http://www.edument.se/), together with the following community
 members: Stefan Seifert, Will "Coke" Coleda, Clifton Wood, James Raspass.
 
 ## 0.8.6
@@ -442,7 +442,7 @@ The following changes were made to the `Cro` distribution:
 * Improve documentation
 
 This release was contributed to by Alexander Kiryuhin, Jonathan Worthington,
-and vendethiel from [Edument](http://cro.services/training-support), together
+and vendethiel from [Edument](http://www.edument.se/), together
 with the following community members: Vadim Belman, Geoffrey Broadwell.
 
 ## 0.8.5
@@ -592,7 +592,7 @@ The following changes were made to the `Cro` distribution:
 * Fix link to the Cro site in the README
 
 This release was contributed to by Alexander Kiryuhin, Jonathan Worthington,
-and vendethiel from [Edument](http://cro.services/training-support), together
+and vendethiel from [Edument](http://www.edument.se/), together
 with the following community members: Alastair Douglas, Elizabeth Mattijsen,
 Geoffrey Broadwell, Jeremy Studer, Joelle Maslak, Jonathan Stowe, Lukas Valle,
 Patrick Böker, and Stefan Seifert.
@@ -667,7 +667,7 @@ The following changes were made to the `Cro` distribution:
 * Add documentation for `Cro::WebApp::Form`
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support), as well as Geoffrey
+from [Edument](http://www.edument.se/), as well as Geoffrey
 Broadwell (who is to thank for the numerous `Cro::WebSocket` improvements).
 
 ## 0.8.2
@@ -712,7 +712,7 @@ The following changes were made to the `Cro` distribution:
 * Various typo fixes
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support), together with the
+from [Edument](http://www.edument.se/), together with the
 following community members: AnaTofuZ, Elizabeth Mattijsen, James Raspass,
 Jeremy Studer, Nick Logan, Patrick Böker.
 
@@ -789,7 +789,7 @@ The following changes were made to the `Cro` distribution:
 * Assorted typo fixes in the documentation
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support), together with the
+from [Edument](http://www.edument.se/), together with the
 following community members: Clifton Wood, Elizabeth Mattijsen, Itsuki Toyota,
 Martin Barth, Olivier Mengué, Patrick Böker.
 
@@ -884,7 +884,7 @@ The following changes were made to the `Cro` distribution:
   to discover which files to ignore if getting unwanted restarts.
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support), together with the
+from [Edument](http://www.edument.se/), together with the
 following community members: Xliff, lukasvalle, Rod Taylor, Lance Wicks, Nick Logan.
 
 ## 0.7.6
@@ -948,7 +948,7 @@ The following changes were made to the `Cro` distribution:
 * Various typo fixes in the documentation
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support), together with the
+from [Edument](http://www.edument.se/), together with the
 following community members: cono, FCO, Fritz Zaucker, Lance Wicks, Moritz
 Lenz, Nick Logan.
 
@@ -1001,7 +1001,7 @@ The following changes were made to the `Cro` distribution:
   were missing from the documentation
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support). We would like to thank
+from [Edument](http://www.edument.se/). We would like to thank
 [Nick Logan (ugexe)](https://deathbyperl6.com/) and [Oetiker+Partner](https://www.oetiker.ch/)
 for supporting the key new features found in this release.
 
@@ -1056,7 +1056,7 @@ The following changes were made to the `cro` distribution:
 * Be a bit more liberal with runner test timeout, for slower systems
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support), together with the
+from [Edument](http://www.edument.se/), together with the
 following community members: Geoffrey Broadwell, Itsuki Toyota, Nick Logan,
 scriplit, Tobias Leich.
 
@@ -1133,7 +1133,7 @@ The following changes were made to the `cro` distribution:
 * Numerous documentation updates to cover the changes in this release
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support). The `cro stub` changes
+from [Edument](http://www.edument.se/). The `cro stub` changes
 (including the React/Redux stub) are thanks to Geoffrey Broadwell.
 
 ## 0.7.2
@@ -1179,7 +1179,7 @@ The following changes were made to the `cro` distribution:
 * A range of typo and layout fixes across the documentation
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington
-from [Edument](http://cro.services/training-support), together with the
+from [Edument](http://www.edument.se/), together with the
 following community members: dakkar, Geoffrey Broadwell, James Raspass, Michal
 Jurosz, Timo Paulssen, vendethiel.
 
@@ -1274,7 +1274,7 @@ The following changes were made to the `cro` distribution:
     * Harden tests against potential hangs
 
 This release was contributed to by Alexander Kiryuhin and Jonathan Worthington from
-[Edument](http://cro.services/training-support), together with the following
+[Edument](http://www.edument.se/), together with the following
 community members: Alexander Hartmaier, Alex Chen, Curt Tilmes, Kai Carver,
 Karl Rune Nilsen, MasterDuke17, Nick Logan, Salve J. Nilsen, Simon Proctor,
 Steve Mynott, and Tom Browder.

@@ -26,9 +26,6 @@ sub routes() is export {
         get -> {
             template 'index.crotmp';
         }
-        get -> 'training-support' {
-            template 'support.crotmp';
-        }
         get -> 'roadmap' {
             template 'roadmap.crotmp';
         }
