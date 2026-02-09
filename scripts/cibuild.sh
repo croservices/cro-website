@@ -9,7 +9,7 @@ cmd_container () {
   echo $QUAY_PASSWORD | docker login quay.io -u $QUAY_USERNAME --password-stdin
   sortable_tag="quay.io/chroot.club/cro-website:${tag_version}"
   latest_tag="quay.io/chroot.club/cro-website:latest"
-  docker build --build-arg quay_expiration="8w" -t $sortable_tag -t $latest_tag .
+  docker build --build-arg quay_expiration="24w" -t $sortable_tag -t $latest_tag .
   docker push $sortable_tag
   docker push $latest_tag
 }
