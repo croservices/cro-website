@@ -28,7 +28,7 @@ To use the Cro libraries in a project, it usually suffices to only depend on
 
 This release was contributed to by:
 
-
+Brian Duggan, Fernando Correa de Oliveira
 
 ## 2025-07-14 Cro::HTTP::Client gets more stable
 
