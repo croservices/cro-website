@@ -8,7 +8,7 @@
   ],
   "auth": "Edument",
   "depends": [
-    "Cro::HTTP:ver<0.8.12>",
+    "Cro::HTTP:ver<0.8.11>",
     "Text::Markdown",
     "Cro::WebApp:ver<0.8.7>"
   ],
