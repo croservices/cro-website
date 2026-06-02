@@ -1,5 +1,30 @@
 # Cro Release History
 
+## 2026-06-02 Fix Cro::HTTP Unbounded memory issue
+
+A patch release for a memory leak issue tracked down by Fritz Zaucker.
+---
+
+The latest versions of the Cro libraries are:
+
+* Cro::Core:ver<0.8.10>:api<0>:auth<zef:cro>
+* Cro::HTTP:ver<0.8.13>:api<0>:auth<zef:cro>
+* Cro::TLS:ver<0.8.10>:api<0>:auth<zef:cro>
+* Cro::WebApp:ver<0.10.0>:api<0>:auth<zef:cro>
+* Cro::WebSocket:ver<0.8.10>:api<0>:auth<zef:cro>
+* cro:ver<0.8.10>:api<0>:auth<zef:cro>
+
+To use the Cro libraries in a project, it usually suffices to only depend on
+`Cro::HTTP` and optionally `Cro::WebApp` or `Cro::WebSocket`.
+
+### Cro::HTTP 0.8.13
+
+* fix unbounded memory growth with $connection-state.early-responses.done;
+
+This release was contributed to by:
+
+Fritz Zaucker
+
 ## 2026-04-23 Fixes and Tweaks to Cro::HTTP
 
 Fixes the content-length header in HTTP/2 and a number of small improvements.
