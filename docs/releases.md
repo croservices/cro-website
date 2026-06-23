@@ -1,5 +1,31 @@
 # Cro Release History
 
+## 2026-06-23 Fix Cro::WebApp::Form constant @CSRF-CHARS issue
+
+A patch release for a raku.foundation infra issue that determined a race condition for constant items that are assigned a lazy list and then that is accessed in a multi-threaded app such as Cro::WebApp.
+---
+
+The latest versions of the Cro libraries are:
+
+* Cro::Core:ver<0.8.10>:api<0>:auth<zef:cro>
+* Cro::HTTP:ver<0.8.13>:api<0>:auth<zef:cro>
+* Cro::TLS:ver<0.8.10>:api<0>:auth<zef:cro>
+* Cro::WebApp:ver<0.10.1>:api<0>:auth<zef:cro>
+* Cro::WebSocket:ver<0.8.10>:api<0>:auth<zef:cro>
+* cro:ver<0.8.10>:api<0>:auth<zef:cro>
+
+To use the Cro libraries in a project, it usually suffices to only depend on
+`Cro::HTTP` and optionally `Cro::WebApp` or `Cro::WebSocket`.
+
+### Cro::WebApp 0.10.1
+
+* Add the 'required' attr to input tags
+* fix constant lazy-list
+
+This release was contributed to by:
+
+Steve Roe, Elizabeth Mattijsen
+
 ## 2026-06-02 Fix Cro::HTTP Unbounded memory issue
 
 A patch release for a memory leak issue tracked down by Fritz Zaucker.
